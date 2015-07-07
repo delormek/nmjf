@@ -16,14 +16,14 @@
     <title>NMJF</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../css/ie-emulation-modes-warning.js"></script>
+    <script src="${pageContext.request.contextPath}//css/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
     <div class="container">
 
       <form class="form-signin" action="/labGti350/gate">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">NMJF !</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input id="inputEmail" name="clis_email" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
         <label for="inputPassword" class="sr-only">Password</label>
@@ -55,10 +55,8 @@
       </form>
 
     </div> <!-- /container -->
-
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="Signin%20Template%20for%20Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
+    <script src="${pageContext.request.contextPath}/css/ie10-viewport-bug-workaround.js"></script>
   
 
 </body></html>
