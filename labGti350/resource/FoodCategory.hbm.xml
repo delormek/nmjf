@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+" http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 3, 2015 10:47:01 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="objects.FoodCategory" table="FoodCategory" catalog="mydb">
+        <id name="idFoodCategory" type="java.lang.Integer">
+            <column name="idFoodCategory" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="45" not-null="true" />
+        </property>
+        <property name="urlImage" type="string">
+            <column name="url_image" length="45" not-null="true" />
+        </property>
+        <set name="foods" table="Food" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idFoodCategory" not-null="true" />
+            </key>
+            <one-to-many class="objects.Food" />
+        </set>
+    </class>
+</hibernate-mapping>

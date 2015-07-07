@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+" http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 3, 2015 10:47:01 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="objects.RemainingFood" table="RemainingFood" catalog="mydb">
+        <composite-id name="id" class="objects.RemainingFoodId">
+            <key-property name="idFood" type="int">
+                <column name="idFood" />
+            </key-property>
+            <key-property name="idRefrigerator" type="int">
+                <column name="idRefrigerator" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="refrigerator" class="objects.Refrigerator" update="false" insert="false" fetch="select">
+            <column name="idRefrigerator" not-null="true" />
+        </many-to-one>
+        <many-to-one name="food" class="objects.Food" update="false" insert="false" fetch="select">
+            <column name="idFood" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="int">
+            <column name="quantity" not-null="true" />
+        </property>
+        <property name="minQuantity" type="int">
+            <column name="min_quantity" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
