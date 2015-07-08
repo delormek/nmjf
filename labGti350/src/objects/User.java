@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 2:25:51 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,9 +18,9 @@ public class User implements java.io.Serializable {
 	private String mailAddress;
 	private String password;
 	private Date birthDate;
+	private Set sharedNotesForIdUserRec = new HashSet(0);
 	private Set orders = new HashSet(0);
-	private Set sharedNotesesForIdUserRec = new HashSet(0);
-	private Set sharedNotesesForIdUserCre = new HashSet(0);
+	private Set sharedNotesForIdUserCre = new HashSet(0);
 	private Set refrigerators = new HashSet(0);
 
 	public User() {
@@ -34,17 +34,16 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(String FName, String LName, String mailAddress,
-			String password, Date birthDate, Set orders,
-			Set sharedNotesesForIdUserRec, Set sharedNotesesForIdUserCre,
-			Set refrigerators) {
+			String password, Date birthDate, Set sharedNotesForIdUserRec,
+			Set orders, Set sharedNotesForIdUserCre, Set refrigerators) {
 		this.FName = FName;
 		this.LName = LName;
 		this.mailAddress = mailAddress;
 		this.password = password;
 		this.birthDate = birthDate;
+		this.sharedNotesForIdUserRec = sharedNotesForIdUserRec;
 		this.orders = orders;
-		this.sharedNotesesForIdUserRec = sharedNotesesForIdUserRec;
-		this.sharedNotesesForIdUserCre = sharedNotesesForIdUserCre;
+		this.sharedNotesForIdUserCre = sharedNotesForIdUserCre;
 		this.refrigerators = refrigerators;
 	}
 
@@ -96,6 +95,14 @@ public class User implements java.io.Serializable {
 		this.birthDate = birthDate;
 	}
 
+	public Set getSharedNotesForIdUserRec() {
+		return this.sharedNotesForIdUserRec;
+	}
+
+	public void setSharedNotesForIdUserRec(Set sharedNotesForIdUserRec) {
+		this.sharedNotesForIdUserRec = sharedNotesForIdUserRec;
+	}
+
 	public Set getOrders() {
 		return this.orders;
 	}
@@ -104,20 +111,12 @@ public class User implements java.io.Serializable {
 		this.orders = orders;
 	}
 
-	public Set getSharedNotesesForIdUserRec() {
-		return this.sharedNotesesForIdUserRec;
+	public Set getSharedNotesForIdUserCre() {
+		return this.sharedNotesForIdUserCre;
 	}
 
-	public void setSharedNotesesForIdUserRec(Set sharedNotesesForIdUserRec) {
-		this.sharedNotesesForIdUserRec = sharedNotesesForIdUserRec;
-	}
-
-	public Set getSharedNotesesForIdUserCre() {
-		return this.sharedNotesesForIdUserCre;
-	}
-
-	public void setSharedNotesesForIdUserCre(Set sharedNotesesForIdUserCre) {
-		this.sharedNotesesForIdUserCre = sharedNotesesForIdUserCre;
+	public void setSharedNotesForIdUserCre(Set sharedNotesForIdUserCre) {
+		this.sharedNotesForIdUserCre = sharedNotesForIdUserCre;
 	}
 
 	public Set getRefrigerators() {

@@ -7,19 +7,16 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
-import objects.SharedNotes;
-import objects.Note;
-import objects.SharedNotesId;
+import objects.SharedNoteId;
 import objects.User;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import entry.Gate;
 import util.HibernateUtil;
+import entry.Gate;
 
 public class UserService extends Service {
 
@@ -55,15 +52,17 @@ public class UserService extends Service {
 
 		User user = (User) q.uniqueResult();
 
-		Set<SharedNotesId> notes = (Set<SharedNotesId>) user.getSharedNotesesForIdUserRec();
-
-		session.close();
 		HashMap<String, Object> argsOut = new HashMap<String, Object>();
 		if (user != null) {
 
 			// Check mail address and password
 			if (user.getMailAddress().compareTo(clis_email) == 0
 					&& user.getPassword().compareTo(clis_pass) == 0) {
+
+				Set<SharedNoteId> notes = (Set<SharedNoteId>) user.getSharedNotesForIdUserRec();
+						
+				
+				
 
 				// save user in an map which will sent to the client
 				argsOut.put(User.USER_LBL_IN_SESSION
@@ -78,7 +77,7 @@ public class UserService extends Service {
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 			}
 		}
-
+		session.close();
 		return argsOut;
 	}
 

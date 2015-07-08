@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 2:25:51 PM by Hibernate Tools 4.3.1
+// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class Note implements java.io.Serializable {
 	private Integer idNote;
 	private String content;
 	private Date date;
-	private Set sharedNoteses = new HashSet(0);
+	private Set sharedNotes = new HashSet(0);
 
 	public Note() {
 	}
@@ -24,10 +24,10 @@ public class Note implements java.io.Serializable {
 		this.date = date;
 	}
 
-	public Note(String content, Date date, Set sharedNoteses) {
+	public Note(String content, Date date, Set sharedNotes) {
 		this.content = content;
 		this.date = date;
-		this.sharedNoteses = sharedNoteses;
+		this.sharedNotes = sharedNotes;
 	}
 
 	public Integer getIdNote() {
@@ -54,12 +54,12 @@ public class Note implements java.io.Serializable {
 		this.date = date;
 	}
 
-	public Set getSharedNoteses() {
-		return this.sharedNoteses;
+	public Set getSharedNotes() {
+		return this.sharedNotes;
 	}
 
-	public void setSharedNoteses(Set sharedNoteses) {
-		this.sharedNoteses = sharedNoteses;
+	public void setSharedNotes(Set sharedNotes) {
+		this.sharedNotes = sharedNotes;
 	}
 
 }

@@ -15,5 +15,16 @@
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
+        
+        <mapping resource="Order.hbm.xml" />
+		<mapping resource="OrderedItem.hbm.xml" />
+		<mapping resource="User.hbm.xml" />
+		<mapping resource="FoodCategory.hbm.xml" />
+		<mapping resource="RemainingFood.hbm.xml" />
+		<mapping resource="SharedNotes.hbm.xml" />
+		<mapping resource="Note.hbm.xml" />
+		<mapping resource="Refrigerator.hbm.xml" />
+		<mapping resource="Food.hbm.xml" /> 
+		
     </session-factory>
 </hibernate-configuration>

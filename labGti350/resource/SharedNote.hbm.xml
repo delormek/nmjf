@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 8, 2015 2:25:51 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="objects.SharedNotes" table="SharedNotes" catalog="mydb" optimistic-lock="version">
-        <composite-id name="id" class="objects.SharedNotesId">
-            <key-property name="idNote" type="int">
-                <column name="idNote" />
+    <class name="objects.SharedNote" table="SharedNote" catalog="mydb" optimistic-lock="version">
+        <composite-id name="id" class="objects.SharedNoteId">
+            <key-property name="idUserRec" type="int">
+                <column name="idUserRec" />
             </key-property>
             <key-property name="idUserCre" type="int">
                 <column name="idUserCre" />
             </key-property>
-            <key-property name="idUserRec" type="int">
-                <column name="idUserRec" />
+            <key-property name="idNote" type="int">
+                <column name="idNote" />
             </key-property>
         </composite-id>
         <many-to-one name="note" class="objects.Note" update="false" insert="false" fetch="select">
@@ -24,8 +24,8 @@
         <many-to-one name="userByIdUserCre" class="objects.User" update="false" insert="false" fetch="select">
             <column name="idUserCre" not-null="true" />
         </many-to-one>
-        <property name="notReadYet" type="java.lang.Integer">
-            <column name="not_read_yet" />
+        <property name="notReadYet" type="int">
+            <column name="not_read_yet" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>
