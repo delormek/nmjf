@@ -1,6 +1,6 @@
 package objects;
-// default package
-// Generated Jul 3, 2015 10:47:01 AM by Hibernate Tools 3.4.0.CR1
+
+// Generated Jul 8, 2015 2:25:51 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,10 +10,6 @@ import java.util.Set;
  */
 public class Refrigerator implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 255020406426117133L;
 	private Integer idRefrigerator;
 	private User user;
 	private Set remainingFoods = new HashSet(0);

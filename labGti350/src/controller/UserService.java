@@ -8,8 +8,11 @@ package controller;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
+import objects.SharedNotes;
 import objects.Note;
+import objects.SharedNotesId;
 import objects.User;
 
 import org.hibernate.Query;
@@ -50,31 +53,32 @@ public class UserService extends Service {
 				"from User where mail_address= :mailaddress").setString(
 				"mailaddress", clis_email);
 
-		List<User> users = q.list();
-		
+		User user = (User) q.uniqueResult();
+
+		Set<SharedNotesId> notes = (Set<SharedNotesId>) user.getSharedNotesesForIdUserRec();
+
 		session.close();
 		HashMap<String, Object> argsOut = new HashMap<String, Object>();
-		if (users.size() == 1) {
-			//Get the user 
-			User user = users.get(0);
-			//Check mail address and password
-			if (user.getMailAddress().compareTo(clis_email) == 0
-					&& user.getPassword().compareTo(clis_pass) == 0) {	
+		if (user != null) {
 
-				//save user in an map which will sent to the client
-				argsOut.put(User.USER_LBL_IN_SESSION + Gate.SESSION_ATTRIBUTE_SUFFIX, user);				
-				//give new location to go 
+			// Check mail address and password
+			if (user.getMailAddress().compareTo(clis_email) == 0
+					&& user.getPassword().compareTo(clis_pass) == 0) {
+
+				// save user in an map which will sent to the client
+				argsOut.put(User.USER_LBL_IN_SESSION
+						+ Gate.SESSION_ATTRIBUTE_SUFFIX, user);
+				// give new location to go
 				argsOut.put(Gate.NEW_LOCATION, "/connected/main.jsp");
-				//authorization is given
+				// authorization is given
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
-				
+
 			} else {
-				//the service do not give authorization
+				// the service do not give authorization
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 			}
 		}
 
-		
 		return argsOut;
 	}
 

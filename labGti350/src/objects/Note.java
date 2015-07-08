@@ -1,6 +1,6 @@
 package objects;
-// default package
-// Generated Jul 3, 2015 10:47:01 AM by Hibernate Tools 3.4.0.CR1
+
+// Generated Jul 8, 2015 2:25:51 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,11 +11,6 @@ import java.util.Set;
  */
 public class Note implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5837551094967962731L;
-	public static final String NOTES_NOT_RD_LBL = "note_not_read";
 	private Integer idNote;
 	private String content;
 	private Date date;

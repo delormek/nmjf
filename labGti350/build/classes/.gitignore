@@ -1,5 +1,15 @@
 /controller/
-/entry/
 /objects/
+/hibernate.reveng.xml
+/hibernate.cfg.xml v2
+/hibernate.cfg.xml 
 /hibernate.cfg.xml v
-/hibernate.cfg.xml
+/Food.hbm.xml
+/FoodCategory.hbm.xml
+/Note.hbm.xml
+/Order.hbm.xml
+/OrderedItem.hbm.xml
+/Refrigerator.hbm.xml
+/RemainingFood.hbm.xml
+/SharedNotes.hbm.xml
+/User.hbm.xml
