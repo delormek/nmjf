@@ -12,23 +12,26 @@ public class SharedNotes implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 5717862943269062332L;
 	private SharedNotesId id;
-	private User user;
+	private User userRec;
+	private User userCre;
 	private Note note;
 	private Integer notReadYet;
 
 	public SharedNotes() {
 	}
 
-	public SharedNotes(SharedNotesId id, User user, Note note) {
+	public SharedNotes(SharedNotesId id, User createur, User receiver, Note note) {
 		this.id = id;
-		this.user = user;
+		this.userCre = createur;
+		this.userRec = receiver;
 		this.note = note;
 	}
 
-	public SharedNotes(SharedNotesId id, User user, Note note,
+	public SharedNotes(SharedNotesId id, User createur, User receiver, Note note,
 			Integer notReadYet) {
 		this.id = id;
-		this.user = user;
+		this.userCre = createur;
+		this.userRec = receiver;
 		this.note = note;
 		this.notReadYet = notReadYet;
 	}
@@ -41,12 +44,21 @@ public class SharedNotes implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return this.user;
+	public User getUserCre() {
+		return this.userCre;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserCre(User user) {
+		this.userCre = user;
+	}
+	
+	
+	public User getUserRec() {
+		return this.userRec;
+	}
+
+	public void setUserRec(User user) {
+		this.userRec = user;
 	}
 
 	public Note getNote() {

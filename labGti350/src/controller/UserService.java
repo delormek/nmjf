@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
+import objects.Note;
 import objects.User;
 
 import org.hibernate.Query;
@@ -49,19 +50,20 @@ public class UserService extends Service {
 				"from User where mail_address= :mailaddress").setString(
 				"mailaddress", clis_email);
 
-		List<User> result = q.list();
+		List<User> users = q.list();
 		
 		session.close();
 		HashMap<String, Object> argsOut = new HashMap<String, Object>();
-		if (result.size() == 1) {
+		if (users.size() == 1) {
 			//Get the user 
-			User user = result.get(0);
+			User user = users.get(0);
 			//Check mail address and password
 			if (user.getMailAddress().compareTo(clis_email) == 0
-					&& user.getPassword().compareTo(clis_pass) == 0) {
+					&& user.getPassword().compareTo(clis_pass) == 0) {	
 
 				//save user in an map which will sent to the client
-				argsOut.put(User.USER_LBL_IN_SESSION + Gate.SESSION_ATTRIBUTE_SUFFIX, user);
+				argsOut.put(User.USER_LBL_IN_SESSION + Gate.SESSION_ATTRIBUTE_SUFFIX, user);				
+				//give new location to go 
 				argsOut.put(Gate.NEW_LOCATION, "/connected/main.jsp");
 				//authorization is given
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);

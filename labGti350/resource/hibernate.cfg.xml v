@@ -6,9 +6,9 @@
     <session-factory name="sessionFactory">
         
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.password">password</property>
-        <property name="connection.url">jdbc:mysql://nmjf-db.czsl0sawytqj.us-west-2.rds.amazonaws.com:3306</property>
-        <property name="connection.username">nmfj_master</property>
+        <property name="connection.password">5Element</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/mydb</property>
+        <property name="connection.username">root</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
          
         <!-- JDBC connection pool (use the built-in) -->

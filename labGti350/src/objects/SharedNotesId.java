@@ -12,14 +12,17 @@ public class SharedNotesId implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -7273734321449332675L;
 	private int idNote;
-	private int idUser;
+	private int idUserCre;
+	private int idUserRec;
 
 	public SharedNotesId() {
 	}
 
-	public SharedNotesId(int idNote, int idUser) {
+	public SharedNotesId(int idNote, int idUserCre, int idUserRec) {
 		this.idNote = idNote;
-		this.idUser = idUser;
+		this.idUserCre = idUserCre;
+		this.idUserRec = idUserRec;
+		
 	}
 
 	public int getIdNote() {
@@ -30,12 +33,22 @@ public class SharedNotesId implements java.io.Serializable {
 		this.idNote = idNote;
 	}
 
-	public int getIdUser() {
-		return this.idUser;
+
+	public int getidUserCre() {
+		return this.idUserCre;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setidUserCre(int idUser) {
+		this.idUserCre = idUser;
+	}
+	
+	
+	public int getidUserRec() {
+		return this.idUserRec;
+	}
+
+	public void setidUserRec(int idUser) {
+		this.idUserRec = idUser;
 	}
 
 	public boolean equals(Object other) {
@@ -48,14 +61,16 @@ public class SharedNotesId implements java.io.Serializable {
 		SharedNotesId castOther = (SharedNotesId) other;
 
 		return (this.getIdNote() == castOther.getIdNote())
-				&& (this.getIdUser() == castOther.getIdUser());
+				&& (this.getidUserCre() == castOther.getidUserCre()
+						&& this.getidUserRec() == castOther.getidUserRec());
 	}
 
 	public int hashCode() {
 		int result = 17;
 
 		result = 37 * result + this.getIdNote();
-		result = 37 * result + this.getIdUser();
+		result = 37 * result + this.getidUserCre();
+		result = 37 * result + this.getidUserRec();
 		return result;
 	}
 

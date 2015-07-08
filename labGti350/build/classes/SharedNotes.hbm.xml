@@ -8,12 +8,18 @@
             <key-property name="idNote" type="int">
                 <column name="idNote" />
             </key-property>
-            <key-property name="idUser" type="int">
-                <column name="idUser" />
+            <key-property name="idUserRec" type="int">
+                <column name="idUserRec" />
+            </key-property>
+            <key-property name="idUserCre" type="int">
+                <column name="idUserCre" />
             </key-property>
         </composite-id>
-        <many-to-one name="user" class="objects.User" update="false" insert="false" fetch="select">
-            <column name="idUser" not-null="true" />
+        <many-to-one name="userRec" class="objects.User" update="false" insert="false" fetch="select">
+            <column name="idUserRec" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userCre" class="objects.User" update="false" insert="false" fetch="select">
+            <column name="idUserCre" not-null="true" />
         </many-to-one>
         <many-to-one name="note" class="objects.Note" update="false" insert="false" fetch="select">
             <column name="idNote" not-null="true" />

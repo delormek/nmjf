@@ -15,6 +15,7 @@ public class Note implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5837551094967962731L;
+	public static final String NOTES_NOT_RD_LBL = "note_not_read";
 	private Integer idNote;
 	private String content;
 	private Date date;
