@@ -1,9 +1,3 @@
-/controller/
-/objects/
-/hibernate.reveng.xml
-/hibernate.cfg.xml v2
-/hibernate.cfg.xml 
-/hibernate.cfg.xml v
 /Food.hbm.xml
 /FoodCategory.hbm.xml
 /Note.hbm.xml
@@ -11,6 +5,11 @@
 /OrderedItem.hbm.xml
 /Refrigerator.hbm.xml
 /RemainingFood.hbm.xml
-/SharedNotes.hbm.xml
-/User.hbm.xml
 /SharedNote.hbm.xml
+/User.hbm.xml
+/controller/
+/entry/
+/hibernate.cfg.xml
+/hibernate.cfg.xml v
+/objects/
+/util/

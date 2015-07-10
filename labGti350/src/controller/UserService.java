@@ -7,13 +7,15 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.List;
 
+import objects.SharedNote;
 import objects.SharedNoteId;
 import objects.User;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import util.HibernateUtil;
 import entry.Gate;
@@ -44,10 +46,10 @@ public class UserService extends Service {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-		session.beginTransaction();
+		Transaction tx = session.beginTransaction();
 
 		Query q = session.createQuery(
-				"from User where mail_address= :mailaddress").setString(
+				"from User where mail_address= :mailaddress ").setString(
 				"mailaddress", clis_email);
 
 		User user = (User) q.uniqueResult();
@@ -59,14 +61,21 @@ public class UserService extends Service {
 			if (user.getMailAddress().compareTo(clis_email) == 0
 					&& user.getPassword().compareTo(clis_pass) == 0) {
 
-				Set<SharedNoteId> notes = (Set<SharedNoteId>) user.getSharedNotesForIdUserRec();
-						
+				q = session.createQuery(
+						"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
+						.setParameter("idUser", user.getIdUser());
+
+				List<Object> notesAndUserCre = (List<Object>) q.list();
 				
-				
+				tx.commit();
 
 				// save user in an map which will sent to the client
 				argsOut.put(User.USER_LBL_IN_SESSION
 						+ Gate.SESSION_ATTRIBUTE_SUFFIX, user);
+				
+				 //save notes in an map which will sent to the client
+				argsOut.put(SharedNote.SHARED_NOTE_REC+Gate.SESSION_ATTRIBUTE_SUFFIX, notesAndUserCre);
+
 				// give new location to go
 				argsOut.put(Gate.NEW_LOCATION, "/connected/main.jsp");
 				// authorization is given
@@ -77,7 +86,8 @@ public class UserService extends Service {
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 			}
 		}
-		session.close();
+		if(session.isOpen())
+			session.close();
 		return argsOut;
 	}
 

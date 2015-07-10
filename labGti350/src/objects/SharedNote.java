@@ -7,6 +7,7 @@ package objects;
  */
 public class SharedNote implements java.io.Serializable {
 
+	public static final String SHARED_NOTE_REC = "shared_note_received";
 	private SharedNoteId id;
 	private Note note;
 	private User userByIdUserRec;

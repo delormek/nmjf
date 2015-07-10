@@ -18,10 +18,10 @@ public class User implements java.io.Serializable {
 	private String mailAddress;
 	private String password;
 	private Date birthDate;
-	private Set sharedNotesForIdUserRec = new HashSet(0);
-	private Set orders = new HashSet(0);
-	private Set sharedNotesForIdUserCre = new HashSet(0);
-	private Set refrigerators = new HashSet(0);
+	private Set<SharedNote> sharedNotesForIdUserRec = new HashSet<SharedNote>(0);
+	private Set<Order> orders = new HashSet<Order>(0);
+	private Set<SharedNote> sharedNotesForIdUserCre = new HashSet<SharedNote>(0);
+	private Set<Refrigerator> refrigerators = new HashSet<Refrigerator>(0);
 
 	public User() {
 	}
@@ -34,17 +34,17 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(String FName, String LName, String mailAddress,
-			String password, Date birthDate, Set sharedNotesForIdUserRec,
-			Set orders, Set sharedNotesForIdUserCre, Set refrigerators) {
+			String password, Date birthDate,Set<SharedNote> sharedNotesForIdUserRec,
+			Set<Order> orders, Set<SharedNote> sharedNotesForIdUserCre, Set<Refrigerator> refrigerators) {
 		this.FName = FName;
 		this.LName = LName;
 		this.mailAddress = mailAddress;
 		this.password = password;
 		this.birthDate = birthDate;
-		this.sharedNotesForIdUserRec = sharedNotesForIdUserRec;
+		this.sharedNotesForIdUserRec =  sharedNotesForIdUserRec;
 		this.orders = orders;
-		this.sharedNotesForIdUserCre = sharedNotesForIdUserCre;
-		this.refrigerators = refrigerators;
+		this.sharedNotesForIdUserCre =  sharedNotesForIdUserCre;
+		this.refrigerators =  refrigerators;
 	}
 
 	public Integer getIdUser() {
@@ -95,35 +95,35 @@ public class User implements java.io.Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Set getSharedNotesForIdUserRec() {
+	public Set<SharedNote> getSharedNotesForIdUserRec() {
 		return this.sharedNotesForIdUserRec;
 	}
 
-	public void setSharedNotesForIdUserRec(Set sharedNotesForIdUserRec) {
+	public void setSharedNotesForIdUserRec(Set<SharedNote> sharedNotesForIdUserRec) {
 		this.sharedNotesForIdUserRec = sharedNotesForIdUserRec;
 	}
 
-	public Set getOrders() {
+	public Set<Order> getOrders() {
 		return this.orders;
 	}
 
-	public void setOrders(Set orders) {
+	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
 
-	public Set getSharedNotesForIdUserCre() {
+	public Set<SharedNote> getSharedNotesForIdUserCre() {
 		return this.sharedNotesForIdUserCre;
 	}
 
-	public void setSharedNotesForIdUserCre(Set sharedNotesForIdUserCre) {
+	public void setSharedNotesForIdUserCre(Set<SharedNote> sharedNotesForIdUserCre) {
 		this.sharedNotesForIdUserCre = sharedNotesForIdUserCre;
 	}
 
-	public Set getRefrigerators() {
+	public Set<Refrigerator> getRefrigerators() {
 		return this.refrigerators;
 	}
 
-	public void setRefrigerators(Set refrigerators) {
+	public void setRefrigerators(Set<Refrigerator> refrigerators) {
 		this.refrigerators = refrigerators;
 	}
 
