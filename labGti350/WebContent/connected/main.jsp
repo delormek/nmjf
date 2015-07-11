@@ -46,17 +46,12 @@
     <![endif]-->
 </head>
 <body>
+
+<div class="container">
 	<%
-		User actualCli = (User) request.getSession().getAttribute(
-				User.USER_LBL_IN_SESSION + Gate.SESSION_ATTRIBUTE_SUFFIX);
 		List<Object> notesAndUserCre = (List<Object>) request.getSession()
 				.getAttribute(SharedNote.SHARED_NOTE_REC + Gate.SESSION_ATTRIBUTE_SUFFIX);
-	%>
-	<h2>No more Junk food. Upgrade yourself !</h2>
-	<p>
-		Welcome
-		<%=actualCli.getFName() + " " + actualCli.getLName()%></p>
-
+	%>	
 	<div class='row'>
 		<%
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-mm-yyyy");
@@ -71,13 +66,27 @@
 				String content = note.getContent();
 				String date = DATE_FORMAT.format(note.getDate());
 		%>
-		<div class='col-lg-2'>
-			<h2>
-				<%=content%>				
-			</h2>
-			<p class="text-danger">	From <%=from_name%> on <%=date%><p>
-				<a class="btn btn-danger" href="#" role="button">Not Read Yet !</a>
-			</p>
+		<div class='col-sm-2'>
+
+			<div class="panel panel-warning">
+
+				<div class="panel-heading">
+					<h3 class="panel-title">
+					From <%=from_name%>	on	<%=date%>
+					</h3>
+				</div>
+				<div class="panel-body">								
+					<p>
+					<%=content%>
+					</p>
+					<p>
+						<a class="btn btn-success" href="#" role="button"> Read !</a>
+					</p>
+				</div>
+
+			</div>
+
+
 		</div>
 		<%
 			}

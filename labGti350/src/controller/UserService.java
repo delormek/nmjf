@@ -67,6 +67,8 @@ public class UserService extends Service {
 
 				List<Object> notesAndUserCre = (List<Object>) q.list();
 				
+				int nbNotesNotRead = notesAndUserCre.size();
+				
 				tx.commit();
 
 				// save user in an map which will sent to the client
@@ -74,10 +76,10 @@ public class UserService extends Service {
 						+ Gate.SESSION_ATTRIBUTE_SUFFIX, user);
 				
 				 //save notes in an map which will sent to the client
-				argsOut.put(SharedNote.SHARED_NOTE_REC+Gate.SESSION_ATTRIBUTE_SUFFIX, notesAndUserCre);
+				argsOut.put(SharedNote.NB_SHARED_NOTE_REC+Gate.SESSION_ATTRIBUTE_SUFFIX, nbNotesNotRead);
 
 				// give new location to go
-				argsOut.put(Gate.NEW_LOCATION, "/connected/main.jsp");
+				argsOut.put(Gate.NEW_LOCATION, "/connected/menu.jsp");
 				// authorization is given
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
 
