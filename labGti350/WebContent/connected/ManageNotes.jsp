@@ -66,7 +66,7 @@
 				String content = note.getContent();
 				String date = DATE_FORMAT.format(note.getDate());
 		%>
-		<div class='col-sm-2'>
+		<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
 
 			<div class="panel panel-warning">
 

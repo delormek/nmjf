@@ -36,7 +36,7 @@
 
     <div class="container">
 
-      <form class="form-signin" action="/labGti350/gate">
+      <form class="form-signin" action="${pageContext.request.contextPath}/gate">
         <h2 class="form-signin-heading">NMJF !</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input id="inputEmail" name="clis_email" class="form-control" placeholder="Email address" required="" autofocus="" type="email">

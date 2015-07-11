@@ -47,78 +47,89 @@
 </head>
 <body>
 	<%
-		User actualCli = (User) request.getSession().getAttribute(
-				User.USER_LBL_IN_SESSION + Gate.SESSION_ATTRIBUTE_SUFFIX);
+		String name = (String) request.getSession().getAttribute(
+				User.USER_NAME_STYLE1 + Gate.SESSION_ATTRIBUTE_SUFFIX);
 
 		int nbNotesNoteRead = (Integer) request.getSession().getAttribute(
 				SharedNote.NB_SHARED_NOTE_REC
 						+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 	%>
 	<div class="container">
+		<center>
+			<div class="jumbotron">
 
-		<div class="jumbotron">
-			<center>
-				<h3 style="text-decoration: underline;";>
-					<a href=""> Hello <%=actualCli.getFName() + " "
-					+ actualCli.getLName().charAt(0) + "."%><span class="badge"
+				<h3 style="text-decoration: underline;">
+					<a href=""> Hello <%=name%><span class="badge"
 						style="color: red;"><%=nbNotesNoteRead%></span></a>
 				</h3>
-			</center>
-		</div>
-		<center>
+
+			</div>
+
 			<div class="row">
-				<a href="">
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a
+						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=launchCartManagement"%>">
 						<img data-holder-rendered="true"
-							src="${pageContext.request.contextPath}/img/menu_icon/cart_icon.png"
-							style="width: 100px; height: 100px;" class="img-thumbnail"
-							alt="100x100">
-				</a>
+						src="${pageContext.request.contextPath}/img/menu_icon/cart_icon.png"
+						style="width: 100px; height: 100px;" class="img-thumbnail"
+						alt="100x100">
+					</a>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a
+						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
+						<img data-holder-rendered="true"
+						src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
+						style="width: 100px; height: 100px;" class="img-thumbnail"
+						alt="100x100">
+					</a>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a
+						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageRecipeService&"+Service.REQUESTED_SERVICE_LBL+"=launchRecipesManagement"%>">
+						<img data-holder-rendered="true"
+						src="${pageContext.request.contextPath}/img/menu_icon/recipe_icon.png"
+						style="width: 100px; height: 100px;" class="img-thumbnail"
+						alt="100x100">
+					</a>
+				</div>
 			</div>
 
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a href=""> <img data-holder-rendered="true"
-					src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
-					alt="100x100">
-				</a>
-			</div>
-
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a href=""> <img data-holder-rendered="true"
-					src="${pageContext.request.contextPath}/img/menu_icon/recipe_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
-					alt="100x100">
-				</a>
-			</div>
-		</center>
-		<center>
 			<div class="row">
-				<a href="">
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a
+						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
 						<img
-							src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
-							style="width: 100px; height: 100px;" class="img-thumbnail"
-							alt="100x100">
-				</a>
-			</div>
+						src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
+						style="width: 100px; height: 100px;" class="img-thumbnail"
+						alt="100x100">
+					</a>
+				</div>
 
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a href=""> <img
-					src="${pageContext.request.contextPath}/img/menu_icon/note_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
-					alt="100x100">
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a
+						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
+						<img
+						src="${pageContext.request.contextPath}/img/menu_icon/note_icon.png"
+						style="width: 100px; height: 100px;" class="img-thumbnail"
+						alt="100x100">
 
-				</a>
-			</div>
+					</a>
+				</div>
 
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a href=""> <img
-					src="${pageContext.request.contextPath}/img/menu_icon/settings_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
-					alt="100x100">
-				</a>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<a
+						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
+						<img
+						src="${pageContext.request.contextPath}/img/menu_icon/settings_icon.png"
+						style="width: 100px; height: 100px;" class="img-thumbnail"
+						alt="100x100">
+					</a>
+				</div>
 			</div>
 		</center>
 	</div>

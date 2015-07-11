@@ -72,8 +72,12 @@ public class UserService extends Service {
 				tx.commit();
 
 				// save user in an map which will sent to the client
-				argsOut.put(User.USER_LBL_IN_SESSION
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX, user);
+				argsOut.put(User.USER_ID
+						+ Gate.SESSION_ATTRIBUTE_SUFFIX, user.getIdUser());
+				
+				String userName = user.getFName()+" "+user.getLName().charAt(0)+".";
+				argsOut.put(User.USER_NAME_STYLE1
+						+ Gate.SESSION_ATTRIBUTE_SUFFIX,userName);
 				
 				 //save notes in an map which will sent to the client
 				argsOut.put(SharedNote.NB_SHARED_NOTE_REC+Gate.SESSION_ATTRIBUTE_SUFFIX, nbNotesNotRead);
@@ -92,11 +96,7 @@ public class UserService extends Service {
 			session.close();
 		return argsOut;
 	}
-
-	public HashMap<String, Object> getProfile(HashMap<String, Object> args) {
-
-		return (HashMap<String, Object>) null;
-	}
+	
 
 	@Override
 	public void load() {
@@ -107,7 +107,7 @@ public class UserService extends Service {
 		 */
 		if (this.servicesList.isEmpty()) {
 			this.servicesList.add("authentication");
-			// this.servicesList.add("getProfile");
+	
 		}
 
 	}
