@@ -1,4 +1,5 @@
 package entry;
+
 /**
  * Author : 
  * Bamb Bakang Tonjé
@@ -17,18 +18,17 @@ import javax.servlet.http.HttpSession;
 import controller.Service;
 
 public class Gate extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 6929203834443821471L;
 	public static final String CURRENT_LOCATION = "current_location";
 	public static final String NEW_LOCATION = "new_location";
 	private static final String WELCOME_PAGE_VALUE = "/notConnected/cover.jsp";
 	/**
-	 * This Charsequence must be part of every session attribute name,
-	 * it is needed in order to recognize them as , well, sessions attributes.
+	 * This Charsequence must be part of every session attribute name, it is
+	 * needed in order to recognize them as , well, sessions attributes.
 	 */
 	public static final CharSequence SESSION_ATTRIBUTE_SUFFIX = "_sess";
-	private static String CurrentLocation = WELCOME_PAGE_VALUE;
-
+	private String currentLocation = WELCOME_PAGE_VALUE;
 
 	/**
 	 * Allow that servlet to handle POST Request
@@ -38,10 +38,13 @@ public class Gate extends HttpServlet {
 
 		HashMap<String, Object> reqParams = getParameters(req);
 		String viewpath;
-		if ((viewpath=(String) reqParams.get(CURRENT_LOCATION)) != null)
-			Gate.CurrentLocation = viewpath;		
 
+		// if reqParams is empty then it means it a new client
 		if (!reqParams.isEmpty()) {
+			// get current location
+			if ((viewpath = (String) reqParams.get(CURRENT_LOCATION)) != null)
+				this.currentLocation = viewpath;
+
 			// call data transmission method, return response
 			HashMap<String, Object> respParams = null;
 			Switch switcher = new Switch();
@@ -51,15 +54,20 @@ public class Gate extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			if (!respParams.isEmpty())
-				if (Boolean.valueOf((Boolean) respParams.get(Service.SERVICE_VALIDATION_RESPONSE_LBL))) {
-					req = setParameters(req, respParams);
-					Gate.CurrentLocation = (String) respParams.get(Gate.NEW_LOCATION);
-				}
+			if (respParams != null) {
+				if (!respParams.isEmpty())
+					if (Boolean.valueOf((Boolean) respParams
+							.get(Service.SERVICE_VALIDATION_RESPONSE_LBL))) {
+						req = setParameters(req, respParams);
+						this.currentLocation = (String) respParams
+								.get(Gate.NEW_LOCATION);
+					}
+			}
 		}
-		
-		System.out.println("Forwarding to "+req.getContextPath()+CurrentLocation);
-		this.getServletContext().getRequestDispatcher(CurrentLocation)
+
+		System.out.println("Forwarding to " + req.getContextPath()
+				+ this.currentLocation);
+		this.getServletContext().getRequestDispatcher(this.currentLocation)
 				.forward(req, resp);
 	}
 

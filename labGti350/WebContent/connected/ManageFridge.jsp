@@ -73,13 +73,13 @@
 		</div>
 		<!-- -------------------------------NOTES ON THE FRIDGE ------------------ -->
 		<div class="page-header">
-			<h1>On the fridge</h1>
+			<h1>Fruits and Vegetables</h1>
 		</div>
 		<div class='row'>
 			<%
 				for (int i = 0; i < notesAndUserCre.size(); i++) {
 
-					Object[] obj = (Object[]) notesAndUserCre.get(i);
+					Object[] obj = (Food[]) notesAndUserCre.get(i);
 					Note note = (Note) obj[0];
 					User createur = (User) obj[1];
 					String from_name = createur.getFName() + " "
@@ -124,7 +124,7 @@
 
 		<!-- ------------------------------------------------------NOTES RECEIVED------------------------- -->
 		<div class="page-header">
-			<h1>Archived</h1>
+			<h1>Side Dish</h1>
 		</div>
 		<div class='row'>
 			<%
@@ -174,7 +174,44 @@
 
 
 		<div class="page-header">
-			<h1>Sent</h1>
+			<h1>Fish and Meat</h1>
+		</div>
+		<div class='row'>
+			<%
+				for (int i = 0; i < notesSent.size(); i++) {
+
+					Note note = (Note) notesSent.get(i);
+					String content = note.getContent();
+					String date = DATE_FORMAT.format(note.getDate());
+			%>
+			<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
+
+				<div class="panel panel-warning">
+
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							Sent on
+							<%=date%>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<p>
+							<%=content%>
+						</p>
+					</div>
+
+				</div>
+
+
+			</div>
+			<%
+				}
+			%>
+		</div>
+		
+		
+		<div class="page-header">
+			<h1>Drinks</h1>
 		</div>
 		<div class='row'>
 			<%

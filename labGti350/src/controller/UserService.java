@@ -54,6 +54,8 @@ public class UserService extends Service {
 
 		User user = (User) q.uniqueResult();
 
+		tx.commit();
+
 		HashMap<String, Object> argsOut = new HashMap<String, Object>();
 		if (user != null) {
 
@@ -61,26 +63,34 @@ public class UserService extends Service {
 			if (user.getMailAddress().compareTo(clis_email) == 0
 					&& user.getPassword().compareTo(clis_pass) == 0) {
 
-				q = session.createQuery(
-						"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
+				Session session1 = HibernateUtil.getSessionFactory()
+						.getCurrentSession();
+
+				Transaction tx1 = session1.beginTransaction();
+
+				q = session1
+						.createQuery(
+								"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
 						.setParameter("idUser", user.getIdUser());
 
 				List<Object> notesAndUserCre = (List<Object>) q.list();
-				
+
 				int nbNotesNotRead = notesAndUserCre.size();
-				
-				tx.commit();
+
+				tx1.commit();
 
 				// save user in an map which will sent to the client
-				argsOut.put(User.USER_ID
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX, user.getIdUser());
-				
-				String userName = user.getFName()+" "+user.getLName().charAt(0)+".";
+				argsOut.put(User.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
+						user.getIdUser());
+
+				String userName = user.getFName() + " "
+						+ user.getLName().charAt(0) + ".";
 				argsOut.put(User.USER_NAME_STYLE1
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX,userName);
-				
-				 //save notes in an map which will sent to the client
-				argsOut.put(SharedNote.NB_SHARED_NOTE_REC+Gate.SESSION_ATTRIBUTE_SUFFIX, nbNotesNotRead);
+						+ Gate.SESSION_ATTRIBUTE_SUFFIX, userName);
+
+				// save notes in an map which will sent to the client
+				argsOut.put(SharedNote.NB_SHARED_NOTES_REC
+						+ Gate.SESSION_ATTRIBUTE_SUFFIX, nbNotesNotRead);
 
 				// give new location to go
 				argsOut.put(Gate.NEW_LOCATION, "/connected/menu.jsp");
@@ -92,11 +102,8 @@ public class UserService extends Service {
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 			}
 		}
-		if(session.isOpen())
-			session.close();
 		return argsOut;
 	}
-	
 
 	@Override
 	public void load() {
@@ -107,7 +114,7 @@ public class UserService extends Service {
 		 */
 		if (this.servicesList.isEmpty()) {
 			this.servicesList.add("authentication");
-	
+
 		}
 
 	}

@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,27 +32,29 @@ public class UserManageNotesService extends Service {
 				+ Gate.SESSION_ATTRIBUTE_SUFFIX));
 
 		if (idUser != -1) {
-			Session session = HibernateUtil.getSessionFactory()
-					.getCurrentSession();
 
-			Transaction tx = session.beginTransaction();
-
-			Query q = session
-					.createQuery(
-							"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
-					.setParameter("idUser", idUser);
-
-			List<Object> notesAndUserCre = (List<Object>) q.list();
-
-			tx.commit();
+			List<Object> notesNotReadAndAssociateCreators = getNotesNotReadAndAssociateCreators(idUser);
+			List<Object> AllReceivednotes = getAllReceivedNotes(idUser);
+			List<Object> AllSentNotes = getAllSentNotes(idUser);
 
 			// save user in an map which will sent to the client
-			argsOut.put(User.USER_ID
-					+ Gate.SESSION_ATTRIBUTE_SUFFIX, idUser);
+			argsOut.put(User.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX, idUser);
 
-			// save notes in an map which will sent to the client
-			argsOut.put(SharedNote.SHARED_NOTE_REC
-					+ Gate.SESSION_ATTRIBUTE_SUFFIX, notesAndUserCre);
+			// save not read notes and associated creator in an map which will
+			// sent to the client
+			argsOut.put(SharedNote.SHARED_NOTES_REC_NOT_READ
+					+ Gate.SESSION_ATTRIBUTE_SUFFIX,
+					notesNotReadAndAssociateCreators);
+
+			// save all received notes in an map which will
+			// sent to the client
+			argsOut.put(SharedNote.SHARED_NOTES_RECEIVED
+					+ Gate.SESSION_ATTRIBUTE_SUFFIX, AllReceivednotes);
+
+			// save all sent notes in an map which will
+			// sent to the client
+			argsOut.put(SharedNote.SHARED_NOTES_SENT
+					+ Gate.SESSION_ATTRIBUTE_SUFFIX, AllSentNotes);
 
 			// give new location to go
 			argsOut.put(Gate.NEW_LOCATION, "/connected/ManageNotes.jsp");
@@ -59,9 +62,61 @@ public class UserManageNotesService extends Service {
 			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
 
 		} else
-			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
+			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 
 		return argsOut;
+	}
+
+	private List<Object> getAllSentNotes(int idUser) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		Query q = session
+				.createQuery(
+						"select s.note from SharedNote s, Note n where s.id.idUserCre= :idUser and s.id.idNote=n.idNote")
+				.setParameter("idUser", idUser);
+
+		List<Object> sentNotes = (List<Object>) q.list();
+
+		tx.commit();
+
+		return sentNotes;
+	}
+
+	private List<Object> getAllReceivedNotes(int idUser) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		Query q = session
+				.createQuery(
+						"select s.note from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=0 and s.id.idNote=n.idNote")
+				.setParameter("idUser", idUser);
+
+		List<Object> readNotes = (List<Object>) q.list();
+
+		tx.commit();		
+
+		return readNotes;
+	}
+
+	private List<Object> getNotesNotReadAndAssociateCreators(int idUser) {
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		Query q = session
+				.createQuery(
+						"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
+				.setParameter("idUser", idUser);
+
+		List<Object> notesNotReadAndAssociateCreators = (List<Object>) q.list();
+
+		tx.commit();		
+
+		return notesNotReadAndAssociateCreators;
 	}
 
 	@Override

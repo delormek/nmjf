@@ -1,15 +1,3 @@
-/Food.hbm.xml
-/FoodCategory.hbm.xml
-/Note.hbm.xml
-/Order.hbm.xml
-/OrderedItem.hbm.xml
-/Refrigerator.hbm.xml
-/RemainingFood.hbm.xml
-/SharedNote.hbm.xml
-/User.hbm.xml
-/controller/
 /entry/
-/hibernate.cfg.xml
-/hibernate.cfg.xml v
-/objects/
-/util/
+/ManageFridge.jsp
+/controller/
