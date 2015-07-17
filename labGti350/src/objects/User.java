@@ -11,6 +11,8 @@ import java.util.Set;
  */
 public class User implements java.io.Serializable {
 
+	public static final String USER_ID = "user_id";
+	public static final String USER_NAME_STYLE1 = "user_name_style1";
 	private UserId id;
 	private Group group;
 	private String FName;
