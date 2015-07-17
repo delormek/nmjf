@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class Food implements java.io.Serializable {
 
-	private Integer idFood;
+	private FoodId id;
 	private FoodCategory foodCategory;
 	private String name;
 	private String description;
@@ -22,8 +22,9 @@ public class Food implements java.io.Serializable {
 	public Food() {
 	}
 
-	public Food(FoodCategory foodCategory, String name, String description,
-			String urlImage, float price) {
+	public Food(FoodId id, FoodCategory foodCategory, String name,
+			String description, String urlImage, float price) {
+		this.id = id;
 		this.foodCategory = foodCategory;
 		this.name = name;
 		this.description = description;
@@ -31,8 +32,10 @@ public class Food implements java.io.Serializable {
 		this.price = price;
 	}
 
-	public Food(FoodCategory foodCategory, String name, String description,
-			String urlImage, float price, Set remainingFoods, Set orderedItems) {
+	public Food(FoodId id, FoodCategory foodCategory, String name,
+			String description, String urlImage, float price,
+			Set remainingFoods, Set orderedItems) {
+		this.id = id;
 		this.foodCategory = foodCategory;
 		this.name = name;
 		this.description = description;
@@ -42,12 +45,12 @@ public class Food implements java.io.Serializable {
 		this.orderedItems = orderedItems;
 	}
 
-	public Integer getIdFood() {
-		return this.idFood;
+	public FoodId getId() {
+		return this.id;
 	}
 
-	public void setIdFood(Integer idFood) {
-		this.idFood = idFood;
+	public void setId(FoodId id) {
+		this.id = id;
 	}
 
 	public FoodCategory getFoodCategory() {

@@ -58,12 +58,12 @@
 		<center>
 			<div class="jumbotron">
 
+
 					<h3 style="text-decoration: underline;">
 					<a
 						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
 						Hi <%=name%> <span class="badge" style="color: red;"><%=nbNotesNoteRead%></span>
-					</a>
-				</h3>
+
 
 			</div>
 

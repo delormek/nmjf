@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class Order implements java.io.Serializable {
 
-	private int idOrder;
+	private OrderId id;
 	private User user;
 	private Date dateOrder;
 	private Set orderedItems = new HashSet(0);
@@ -19,25 +19,25 @@ public class Order implements java.io.Serializable {
 	public Order() {
 	}
 
-	public Order(int idOrder, User user, Date dateOrder) {
-		this.idOrder = idOrder;
+	public Order(OrderId id, User user, Date dateOrder) {
+		this.id = id;
 		this.user = user;
 		this.dateOrder = dateOrder;
 	}
 
-	public Order(int idOrder, User user, Date dateOrder, Set orderedItems) {
-		this.idOrder = idOrder;
+	public Order(OrderId id, User user, Date dateOrder, Set orderedItems) {
+		this.id = id;
 		this.user = user;
 		this.dateOrder = dateOrder;
 		this.orderedItems = orderedItems;
 	}
 
-	public int getIdOrder() {
-		return this.idOrder;
+	public OrderId getId() {
+		return this.id;
 	}
 
-	public void setIdOrder(int idOrder) {
-		this.idOrder = idOrder;
+	public void setId(OrderId id) {
+		this.id = id;
 	}
 
 	public User getUser() {

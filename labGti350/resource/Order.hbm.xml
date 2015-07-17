@@ -1,15 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="objects.Order" table="Order" catalog="mydb" optimistic-lock="version">
-        <id name="idOrder" type="int">
-            <column name="idOrder" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="user" class="objects.User" fetch="select">
+        <composite-id name="id" class="objects.OrderId">
+            <key-property name="idOrder" type="int">
+                <column name="idOrder" />
+            </key-property>
+            <key-property name="idGroup" type="int">
+                <column name="idGroup" />
+            </key-property>
+            <key-property name="idUser" type="int">
+                <column name="idUser" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="user" class="objects.User" update="false" insert="false" fetch="select">
             <column name="idUser" not-null="true" />
+            <column name="idGroup" not-null="true" />
         </many-to-one>
         <property name="dateOrder" type="timestamp">
             <column name="date_Order" length="19" not-null="true" />
@@ -17,6 +25,8 @@
         <set name="orderedItems" table="OrderedItem" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idOrder" not-null="true" />
+                <column name="idGroup" not-null="true" />
+                <column name="idUser" not-null="true" />
             </key>
             <one-to-many class="objects.OrderedItem" />
         </set>

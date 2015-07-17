@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,49 +11,57 @@ import java.util.Set;
  */
 public class User implements java.io.Serializable {
 
-	public static final String USER_ID = "user_id";
-	public static final String USER_NAME_STYLE1 = "user_name_style1";
-	private Integer idUser;
+	private UserId id;
+	private Group group;
 	private String FName;
 	private String LName;
 	private String mailAddress;
 	private String password;
 	private Date birthDate;
-	private Set<SharedNote> sharedNotesForIdUserRec = new HashSet<SharedNote>(0);
-	private Set<Order> orders = new HashSet<Order>(0);
-	private Set<SharedNote> sharedNotesForIdUserCre = new HashSet<SharedNote>(0);
-	private Set<Refrigerator> refrigerators = new HashSet<Refrigerator>(0);
+	private Set sharedNotes = new HashSet(0);
+	private Set orders = new HashSet(0);
 
 	public User() {
 	}
 
-	public User(String FName, String LName, String mailAddress, String password) {
+	public User(UserId id, Group group, String FName, String LName,
+			String mailAddress, String password) {
+		this.id = id;
+		this.group = group;
 		this.FName = FName;
 		this.LName = LName;
 		this.mailAddress = mailAddress;
 		this.password = password;
 	}
 
-	public User(String FName, String LName, String mailAddress,
-			String password, Date birthDate,Set<SharedNote> sharedNotesForIdUserRec,
-			Set<Order> orders, Set<SharedNote> sharedNotesForIdUserCre, Set<Refrigerator> refrigerators) {
+	public User(UserId id, Group group, String FName, String LName,
+			String mailAddress, String password, Date birthDate,
+			Set sharedNotes, Set orders) {
+		this.id = id;
+		this.group = group;
 		this.FName = FName;
 		this.LName = LName;
 		this.mailAddress = mailAddress;
 		this.password = password;
 		this.birthDate = birthDate;
-		this.sharedNotesForIdUserRec =  sharedNotesForIdUserRec;
+		this.sharedNotes = sharedNotes;
 		this.orders = orders;
-		this.sharedNotesForIdUserCre =  sharedNotesForIdUserCre;
-		this.refrigerators =  refrigerators;
 	}
 
-	public Integer getIdUser() {
-		return this.idUser;
+	public UserId getId() {
+		return this.id;
 	}
 
-	public void setIdUser(Integer idUser) {
-		this.idUser = idUser;
+	public void setId(UserId id) {
+		this.id = id;
+	}
+
+	public Group getGroup() {
+		return this.group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 
 	public String getFName() {
@@ -96,36 +104,20 @@ public class User implements java.io.Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Set<SharedNote> getSharedNotesForIdUserRec() {
-		return this.sharedNotesForIdUserRec;
+	public Set getSharedNotes() {
+		return this.sharedNotes;
 	}
 
-	public void setSharedNotesForIdUserRec(Set<SharedNote> sharedNotesForIdUserRec) {
-		this.sharedNotesForIdUserRec = sharedNotesForIdUserRec;
+	public void setSharedNotes(Set sharedNotes) {
+		this.sharedNotes = sharedNotes;
 	}
 
-	public Set<Order> getOrders() {
+	public Set getOrders() {
 		return this.orders;
 	}
 
-	public void setOrders(Set<Order> orders) {
+	public void setOrders(Set orders) {
 		this.orders = orders;
-	}
-
-	public Set<SharedNote> getSharedNotesForIdUserCre() {
-		return this.sharedNotesForIdUserCre;
-	}
-
-	public void setSharedNotesForIdUserCre(Set<SharedNote> sharedNotesForIdUserCre) {
-		this.sharedNotesForIdUserCre = sharedNotesForIdUserCre;
-	}
-
-	public Set<Refrigerator> getRefrigerators() {
-		return this.refrigerators;
-	}
-
-	public void setRefrigerators(Set<Refrigerator> refrigerators) {
-		this.refrigerators = refrigerators;
 	}
 
 }

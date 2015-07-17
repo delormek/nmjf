@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,36 +10,38 @@ import java.util.Set;
  */
 public class Refrigerator implements java.io.Serializable {
 
-	private Integer idRefrigerator;
-	private User user;
+	private RefrigeratorId id;
+	private Group group;
 	private Set remainingFoods = new HashSet(0);
 
 	public Refrigerator() {
 	}
 
-	public Refrigerator(User user) {
-		this.user = user;
+	public Refrigerator(RefrigeratorId id, Group group) {
+		this.id = id;
+		this.group = group;
 	}
 
-	public Refrigerator(User user, Set remainingFoods) {
-		this.user = user;
+	public Refrigerator(RefrigeratorId id, Group group, Set remainingFoods) {
+		this.id = id;
+		this.group = group;
 		this.remainingFoods = remainingFoods;
 	}
 
-	public Integer getIdRefrigerator() {
-		return this.idRefrigerator;
+	public RefrigeratorId getId() {
+		return this.id;
 	}
 
-	public void setIdRefrigerator(Integer idRefrigerator) {
-		this.idRefrigerator = idRefrigerator;
+	public void setId(RefrigeratorId id) {
+		this.id = id;
 	}
 
-	public User getUser() {
-		return this.user;
+	public Group getGroup() {
+		return this.group;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 
 	public Set getRemainingFoods() {

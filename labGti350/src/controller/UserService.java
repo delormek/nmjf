@@ -71,7 +71,7 @@ public class UserService extends Service {
 				q = session1
 						.createQuery(
 								"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
-						.setParameter("idUser", user.getIdUser());
+						.setParameter("idUser", user.getId());
 
 				List<Object> notesAndUserCre = (List<Object>) q.list();
 
@@ -80,8 +80,9 @@ public class UserService extends Service {
 				tx1.commit();
 
 				// save user in an map which will sent to the client
+
 				argsOut.put(User.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
-						user.getIdUser());
+						user.getId());
 
 				String userName = user.getFName() + " "
 						+ user.getLName().charAt(0) + ".";
@@ -114,7 +115,6 @@ public class UserService extends Service {
 		 */
 		if (this.servicesList.isEmpty()) {
 			this.servicesList.add("authentication");
-
 		}
 
 	}

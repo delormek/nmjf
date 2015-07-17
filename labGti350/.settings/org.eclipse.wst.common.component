@@ -2,9 +2,9 @@
     <wb-module deploy-name="labGti350">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent/connected"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent/notConnected"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
         <property name="java-output-path" value="/labGti350/build/classes"/>
         <property name="context-root" value="labGti350"/>
     </wb-module>

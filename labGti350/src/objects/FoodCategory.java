@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 8, 2015 3:09:09 PM by Hibernate Tools 4.3.1
+// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;

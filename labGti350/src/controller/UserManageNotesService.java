@@ -1,5 +1,6 @@
 package controller;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -117,7 +118,7 @@ public class UserManageNotesService extends Service {
 		tx.commit();		
 
 		return notesNotReadAndAssociateCreators;
-	}
+		}
 
 	@Override
 	public void load() {
