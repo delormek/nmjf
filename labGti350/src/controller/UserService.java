@@ -22,6 +22,10 @@ import entry.Gate;
 
 public class UserService extends Service {
 
+	private static final String NB_SHARED_NOTES_REC = "nb_shared_notes_rec";
+	private static final String USER_NAME_STYLE1 = "user_name_style1";
+	static final String USER_ID = "user_id";
+
 	public HashMap<String, Object> executes(HashMap<String, String> args) {
 		load();
 		return executes(this.getClass(), args);
@@ -81,16 +85,16 @@ public class UserService extends Service {
 
 				// save user in an map which will sent to the client
 
-				argsOut.put(User.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
+				argsOut.put(UserService.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
 						user.getId());
 
 				String userName = user.getFName() + " "
 						+ user.getLName().charAt(0) + ".";
-				argsOut.put(User.USER_NAME_STYLE1
+				argsOut.put(UserService.USER_NAME_STYLE1
 						+ Gate.SESSION_ATTRIBUTE_SUFFIX, userName);
 
 				// save notes in an map which will sent to the client
-				argsOut.put(SharedNote.NB_SHARED_NOTES_REC
+				argsOut.put(UserService.NB_SHARED_NOTES_REC
 						+ Gate.SESSION_ATTRIBUTE_SUFFIX, nbNotesNotRead);
 
 				// give new location to go

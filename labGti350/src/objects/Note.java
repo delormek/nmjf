@@ -1,7 +1,6 @@
+// default package
+// Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1
 package objects;
-
-// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;

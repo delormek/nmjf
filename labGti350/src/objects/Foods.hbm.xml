@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Foods" table="foods" catalog="mydb" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" unique="true" />
+        </property>
+        <property name="nameScientific" type="string">
+            <column name="name_scientific" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="itisId" type="string">
+            <column name="itis_id" />
+        </property>
+        <property name="wikipediaId" type="string">
+            <column name="wikipedia_id" />
+        </property>
+        <property name="pictureFileName" type="string">
+            <column name="picture_file_name" />
+        </property>
+        <property name="pictureContentType" type="string">
+            <column name="picture_content_type" />
+        </property>
+        <property name="pictureFileSize" type="java.lang.Integer">
+            <column name="picture_file_size" />
+        </property>
+        <property name="pictureUpdatedAt" type="timestamp">
+            <column name="picture_updated_at" length="19" />
+        </property>
+        <property name="legacyId" type="java.lang.Integer">
+            <column name="legacy_id" />
+        </property>
+        <property name="foodGroup" type="string">
+            <column name="food_group" />
+        </property>
+        <property name="foodSubgroup" type="string">
+            <column name="food_subgroup" />
+        </property>
+        <property name="foodType" type="string">
+            <column name="food_type" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" />
+        </property>
+        <property name="creatorId" type="java.lang.Integer">
+            <column name="creator_id" />
+        </property>
+        <property name="updaterId" type="java.lang.Integer">
+            <column name="updater_id" />
+        </property>
+    </class>
+</hibernate-mapping>

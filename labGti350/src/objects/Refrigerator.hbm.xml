@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="objects.Refrigerator" table="Refrigerator" catalog="mydb" optimistic-lock="version">
-        <composite-id name="id" class="objects.RefrigeratorId">
+    <class name="Refrigerator" table="Refrigerator" catalog="mydb" optimistic-lock="version">
+        <composite-id name="id" class="RefrigeratorId">
             <key-property name="idRefrigerator" type="int">
                 <column name="idRefrigerator" />
             </key-property>
@@ -12,7 +12,7 @@
                 <column name="idGroup" />
             </key-property>
         </composite-id>
-        <many-to-one name="group" class="objects.Group" update="false" insert="false" fetch="select">
+        <many-to-one name="group" class="Group" update="false" insert="false" fetch="select">
             <column name="idGroup" not-null="true" />
         </many-to-one>
         <set name="remainingFoods" table="RemainingFood" inverse="true" lazy="true" fetch="select">
@@ -20,7 +20,7 @@
                 <column name="idRefrigerator" not-null="true" />
                 <column name="idGroup" not-null="true" />
             </key>
-            <one-to-many class="objects.RemainingFood" />
+            <one-to-many class="RemainingFood" />
         </set>
     </class>
 </hibernate-mapping>

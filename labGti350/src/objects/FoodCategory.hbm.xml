@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="objects.FoodCategory" table="FoodCategory" catalog="mydb" optimistic-lock="version">
+    <class name="FoodCategory" table="FoodCategory" catalog="mydb" optimistic-lock="version">
         <id name="idFoodCategory" type="java.lang.Integer">
             <column name="idFoodCategory" />
             <generator class="identity" />
@@ -21,7 +21,7 @@
             <key>
                 <column name="idFoodCategory" not-null="true" />
             </key>
-            <one-to-many class="objects.Food" />
+            <one-to-many class="Food" />
         </set>
     </class>
 </hibernate-mapping>

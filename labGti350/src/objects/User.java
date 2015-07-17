@@ -1,7 +1,6 @@
+// default package
+// Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1
 package objects;
-
-// Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,8 +10,6 @@ import java.util.Set;
  */
 public class User implements java.io.Serializable {
 
-	public static final String USER_ID = "user_id";
-	public static final String USER_NAME_STYLE1 = "user_name_style1";
 	private UserId id;
 	private Group group;
 	private String FName;

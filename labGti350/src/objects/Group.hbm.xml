@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="objects.Group" table="Group" catalog="mydb" optimistic-lock="version">
+    <class name="Group" table="Group" catalog="mydb" optimistic-lock="version">
         <id name="idGroup" type="int">
             <column name="idGroup" />
             <generator class="assigned" />
@@ -15,13 +15,13 @@
             <key>
                 <column name="idGroup" not-null="true" />
             </key>
-            <one-to-many class="objects.Refrigerator" />
+            <one-to-many class="Refrigerator" />
         </set>
         <set name="users" table="User" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idGroup" not-null="true" />
             </key>
-            <one-to-many class="objects.User" />
+            <one-to-many class="User" />
         </set>
     </class>
 </hibernate-mapping>

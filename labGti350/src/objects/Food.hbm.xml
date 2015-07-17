@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 17, 2015 12:09:18 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="objects.Food" table="Food" catalog="mydb" optimistic-lock="version">
-        <composite-id name="id" class="objects.FoodId">
+    <class name="Food" table="Food" catalog="mydb" optimistic-lock="version">
+        <composite-id name="id" class="FoodId">
             <key-property name="idFood" type="int">
                 <column name="idFood" />
             </key-property>
@@ -12,7 +12,7 @@
                 <column name="idFoodCategory" />
             </key-property>
         </composite-id>
-        <many-to-one name="foodCategory" class="objects.FoodCategory" update="false" insert="false" fetch="select">
+        <many-to-one name="foodCategory" class="FoodCategory" update="false" insert="false" fetch="select">
             <column name="idFoodCategory" not-null="true" />
         </many-to-one>
         <property name="name" type="string">
@@ -32,14 +32,14 @@
                 <column name="idFood" not-null="true" />
                 <column name="idFoodCategory" not-null="true" />
             </key>
-            <one-to-many class="objects.RemainingFood" />
+            <one-to-many class="RemainingFood" />
         </set>
         <set name="orderedItems" table="OrderedItem" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idFood" not-null="true" />
                 <column name="idFoodCategory" not-null="true" />
             </key>
-            <one-to-many class="objects.OrderedItem" />
+            <one-to-many class="OrderedItem" />
         </set>
     </class>
 </hibernate-mapping>
