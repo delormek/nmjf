@@ -55,7 +55,7 @@
 		<div class="row">
 
 			<div
-				class=" col-xs-3 col-sm-3 col-md-3 	col-lg-3 col-lg-offset-5">
+				class=" col-xs-12 col-xs-offset-3 col-sm-12 col-md-4 col-lg-4">
 
 
 
@@ -76,7 +76,7 @@
 		<div class="row">
 
 			<div
-				class="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=launchCartManagement"%>">
 					<img data-holder-rendered="true"
@@ -87,7 +87,7 @@
 			</div>
 
 			<div
-				class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+				class="col-xs-6  col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
 					<img data-holder-rendered="true"
@@ -101,7 +101,7 @@
 		<div class="row">
 
 			<div
-				class="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageRecipeService&"+Service.REQUESTED_SERVICE_LBL+"=launchRecipesManagement"%>">
 					<img data-holder-rendered="true"
@@ -113,7 +113,7 @@
 
 
 			<div
-				class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
 					<img
@@ -127,7 +127,7 @@
 		<div class="row">
 
 			<div
-				class="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
 					<img
@@ -139,7 +139,7 @@
 			</div>
 
 			<div
-				class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
 					<img
