@@ -12,3 +12,5 @@
 /RemainingFood.hbm.xml
 /SharedNote.hbm.xml
 /User.hbm.xml
+/entry/
+/hibernate.cfg.xml

@@ -1,13 +1,8 @@
-<%@page import="java.util.*"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="objects.SharedNote"%>
-<%@page import="controller.Service"%>
+<%@page import="java.lang.Long"%>
+<%@page import="controller.UserService"%>
+<%@page import="entry.Gate"%>
 <%@page import="entry.Switch"%>
-<%@page import="objects.User"%>
-<%@page import="entry.Gate"%>
-<%@page import="objects.Note"%>
-<%@page import="entry.Gate"%>
-
+<%@page import="controller.Service"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -42,105 +37,124 @@
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.3.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
 	<%
 		String name = (String) request.getSession().getAttribute(
-				User.USER_NAME_STYLE1 + Gate.SESSION_ATTRIBUTE_SUFFIX);
+				UserService.USER_NAME_STYLE1
+						+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 
-		int nbNotesNoteRead = (Integer) request.getSession().getAttribute(
-				SharedNote.NB_SHARED_NOTES_REC
+		Long nbNotesNotRead = (Long) request.getSession().getAttribute(
+				UserService.NB_SHARED_NOTES_REC
 						+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 	%>
 	<div class="container">
-		<center>
-			<div class="jumbotron">
+
+		<div class="row">
+
+			<div
+				class=" col-xs-3 col-sm-3 col-md-3 	col-lg-3 col-lg-offset-5">
 
 
+
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
 					<h3 style="text-decoration: underline;">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
-						Hi <%=name%> <span class="badge" style="color: red;"><%=nbNotesNoteRead%></span>
-
+						Hi <% out.print(name);
+						if (nbNotesNotRead > 0) {
+							out.print("<span class=\"badge\" style=\"color: red;\">"+ nbNotesNotRead + "</span>");
+						}
+					%>
+					</h3>
+				</a>
 
 			</div>
+		</div>
+		</br>
+		<div class="row">
 
-			<div class="row">
-
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=launchCartManagement"%>">
-						<img data-holder-rendered="true"
-						src="${pageContext.request.contextPath}/img/menu_icon/cart_icon.png"
-						style="width: 100px; height: 100px;" class="img-thumbnail"
-						alt="100x100">
-					</a>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
-						<img data-holder-rendered="true"
-						src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
-						style="width: 100px; height: 100px;" class="img-thumbnail"
-						alt="100x100">
-					</a>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageRecipeService&"+Service.REQUESTED_SERVICE_LBL+"=launchRecipesManagement"%>">
-						<img data-holder-rendered="true"
-						src="${pageContext.request.contextPath}/img/menu_icon/recipe_icon.png"
-						style="width: 100px; height: 100px;" class="img-thumbnail"
-						alt="100x100">
-					</a>
-				</div>
+			<div
+				class="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=launchCartManagement"%>">
+					<img data-holder-rendered="true"
+					src="${pageContext.request.contextPath}/img/menu_icon/cart_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
 			</div>
 
-			<div class="row">
-
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
-						<img
-						src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
-						style="width: 100px; height: 100px;" class="img-thumbnail"
-						alt="100x100">
-					</a>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
-						<img
-						src="${pageContext.request.contextPath}/img/menu_icon/note_icon.png"
-						style="width: 100px; height: 100px;" class="img-thumbnail"
-						alt="100x100">
-
-					</a>
-				</div>
-
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
-						<img
-						src="${pageContext.request.contextPath}/img/menu_icon/settings_icon.png"
-						style="width: 100px; height: 100px;" class="img-thumbnail"
-						alt="100x100">
-					</a>
-				</div>
+			<div
+				class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
+					<img data-holder-rendered="true"
+					src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
 			</div>
-		</center>
+		</div>
+		<br />
+		<div class="row">
+
+			<div
+				class="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageRecipeService&"+Service.REQUESTED_SERVICE_LBL+"=launchRecipesManagement"%>">
+					<img data-holder-rendered="true"
+					src="${pageContext.request.contextPath}/img/menu_icon/recipe_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
+			</div>
+
+
+			<div
+				class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
+					<img
+					src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+
+			<div
+				class="col-xs-3 col-xs-offset-3 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3">
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
+					<img
+					src="${pageContext.request.contextPath}/img/menu_icon/note_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+
+				</a>
+			</div>
+
+			<div
+				class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1 col-lg-3 col-lg-offset-1">
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
+					<img
+					src="${pageContext.request.contextPath}/img/menu_icon/settings_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
+			</div>
+		</div>
+
 	</div>
 
 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script
 		src="${pageContext.request.contextPath}/css/ie10-viewport-bug-workaround.js"></script>
-
-
 </body>
 </html>

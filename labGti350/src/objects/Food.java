@@ -1,6 +1,8 @@
-// default package
-// Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1
 package objects;
+
+// Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1
+
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,46 +11,68 @@ import java.util.Set;
  */
 public class Food implements java.io.Serializable {
 
-	private FoodId id;
+	private Integer id;
 	private FoodCategory foodCategory;
 	private String name;
+	private String nameScientific;
 	private String description;
-	private String urlImage;
-	private float price;
-	private Set remainingFoods = new HashSet(0);
+	private String itisId;
+	private String wikipediaId;
+	private String pictureFileName;
+	private String pictureContentType;
+	private Integer pictureFileSize;
+	private Date pictureUpdatedAt;
+	private Integer legacyId;
+	private String foodGroup;
+	private String foodSubgroup;
+	private String foodType;
+	private Date createdAt;
+	private Date updatedAt;
+	private Integer creatorId;
+	private Integer updaterId;
 	private Set orderedItems = new HashSet(0);
 
 	public Food() {
 	}
 
-	public Food(FoodId id, FoodCategory foodCategory, String name,
-			String description, String urlImage, float price) {
-		this.id = id;
-		this.foodCategory = foodCategory;
+	public Food(String name, String foodType) {
 		this.name = name;
-		this.description = description;
-		this.urlImage = urlImage;
-		this.price = price;
+		this.foodType = foodType;
 	}
 
-	public Food(FoodId id, FoodCategory foodCategory, String name,
-			String description, String urlImage, float price,
-			Set remainingFoods, Set orderedItems) {
-		this.id = id;
+	public Food(FoodCategory foodCategory, String name, String nameScientific,
+			String description, String itisId, String wikipediaId,
+			String pictureFileName, String pictureContentType,
+			Integer pictureFileSize, Date pictureUpdatedAt, Integer legacyId,
+			String foodGroup, String foodSubgroup, String foodType,
+			Date createdAt, Date updatedAt, Integer creatorId,
+			Integer updaterId, Set orderedItems) {
 		this.foodCategory = foodCategory;
 		this.name = name;
+		this.nameScientific = nameScientific;
 		this.description = description;
-		this.urlImage = urlImage;
-		this.price = price;
-		this.remainingFoods = remainingFoods;
+		this.itisId = itisId;
+		this.wikipediaId = wikipediaId;
+		this.pictureFileName = pictureFileName;
+		this.pictureContentType = pictureContentType;
+		this.pictureFileSize = pictureFileSize;
+		this.pictureUpdatedAt = pictureUpdatedAt;
+		this.legacyId = legacyId;
+		this.foodGroup = foodGroup;
+		this.foodSubgroup = foodSubgroup;
+		this.foodType = foodType;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.creatorId = creatorId;
+		this.updaterId = updaterId;
 		this.orderedItems = orderedItems;
 	}
 
-	public FoodId getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(FoodId id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -68,6 +92,14 @@ public class Food implements java.io.Serializable {
 		this.name = name;
 	}
 
+	public String getNameScientific() {
+		return this.nameScientific;
+	}
+
+	public void setNameScientific(String nameScientific) {
+		this.nameScientific = nameScientific;
+	}
+
 	public String getDescription() {
 		return this.description;
 	}
@@ -76,28 +108,116 @@ public class Food implements java.io.Serializable {
 		this.description = description;
 	}
 
-	public String getUrlImage() {
-		return this.urlImage;
+	public String getItisId() {
+		return this.itisId;
 	}
 
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
+	public void setItisId(String itisId) {
+		this.itisId = itisId;
 	}
 
-	public float getPrice() {
-		return this.price;
+	public String getWikipediaId() {
+		return this.wikipediaId;
 	}
 
-	public void setPrice(float price) {
-		this.price = price;
+	public void setWikipediaId(String wikipediaId) {
+		this.wikipediaId = wikipediaId;
 	}
 
-	public Set getRemainingFoods() {
-		return this.remainingFoods;
+	public String getPictureFileName() {
+		return this.pictureFileName;
 	}
 
-	public void setRemainingFoods(Set remainingFoods) {
-		this.remainingFoods = remainingFoods;
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
+	}
+
+	public String getPictureContentType() {
+		return this.pictureContentType;
+	}
+
+	public void setPictureContentType(String pictureContentType) {
+		this.pictureContentType = pictureContentType;
+	}
+
+	public Integer getPictureFileSize() {
+		return this.pictureFileSize;
+	}
+
+	public void setPictureFileSize(Integer pictureFileSize) {
+		this.pictureFileSize = pictureFileSize;
+	}
+
+	public Date getPictureUpdatedAt() {
+		return this.pictureUpdatedAt;
+	}
+
+	public void setPictureUpdatedAt(Date pictureUpdatedAt) {
+		this.pictureUpdatedAt = pictureUpdatedAt;
+	}
+
+	public Integer getLegacyId() {
+		return this.legacyId;
+	}
+
+	public void setLegacyId(Integer legacyId) {
+		this.legacyId = legacyId;
+	}
+
+	public String getFoodGroup() {
+		return this.foodGroup;
+	}
+
+	public void setFoodGroup(String foodGroup) {
+		this.foodGroup = foodGroup;
+	}
+
+	public String getFoodSubgroup() {
+		return this.foodSubgroup;
+	}
+
+	public void setFoodSubgroup(String foodSubgroup) {
+		this.foodSubgroup = foodSubgroup;
+	}
+
+	public String getFoodType() {
+		return this.foodType;
+	}
+
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
+	}
+
+	public Date getCreatedAt() {
+		return this.createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return this.updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Integer getCreatorId() {
+		return this.creatorId;
+	}
+
+	public void setCreatorId(Integer creatorId) {
+		this.creatorId = creatorId;
+	}
+
+	public Integer getUpdaterId() {
+		return this.updaterId;
+	}
+
+	public void setUpdaterId(Integer updaterId) {
+		this.updaterId = updaterId;
 	}
 
 	public Set getOrderedItems() {

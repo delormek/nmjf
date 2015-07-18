@@ -17,14 +17,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import util.HibernateUtil;
 import entry.Gate;
+import util.HibernateUtil;
 
 public class UserService extends Service {
 
-	private static final String NB_SHARED_NOTES_REC = "nb_shared_notes_rec";
-	private static final String USER_NAME_STYLE1 = "user_name_style1";
-	static final String USER_ID = "user_id";
+	public static final String NB_SHARED_NOTES_REC = "nb_shared_notes_rec";
+	public static final String USER_NAME_STYLE1 = "user_name_style1";
+	public static final String USER_ID = "user_id";
 
 	public HashMap<String, Object> executes(HashMap<String, String> args) {
 		load();
@@ -74,19 +74,19 @@ public class UserService extends Service {
 
 				q = session1
 						.createQuery(
-								"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
-						.setParameter("idUser", user.getId());
+								"select count(*) from SharedNote s where s.group.idGroup= :idGroup and s.notReadYet=1 ")
+						.setParameter("idGroup", user.getGroup().getIdGroup());
 
-				List<Object> notesAndUserCre = (List<Object>) q.list();
-
-				int nbNotesNotRead = notesAndUserCre.size();
+				Long nbNotesNotRead = (long) 0;
+				nbNotesNotRead = (Long) q.uniqueResult();
 
 				tx1.commit();
 
 				// save user in an map which will sent to the client
 
-				argsOut.put(UserService.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
-						user.getId());
+				argsOut.put(
+						UserService.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
+						user.getIdUser());
 
 				String userName = user.getFName() + " "
 						+ user.getLName().charAt(0) + ".";
@@ -102,10 +102,9 @@ public class UserService extends Service {
 				// authorization is given
 				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
 
-			} else {
-				// the service do not give authorization
-				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 			}
+			else 
+				argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 		}
 		return argsOut;
 	}

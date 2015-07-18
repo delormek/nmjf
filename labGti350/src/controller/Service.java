@@ -34,7 +34,7 @@ public abstract class Service implements ILoader {
 	@SuppressWarnings("unchecked")
 	protected HashMap<String, Object> executes(Class<?> serviceClass,
 			HashMap<String, String> args) {
-		HashMap<String, Object> respMap = null;
+		HashMap<String, Object> respMap = new HashMap<String, Object>();
 		// validate service existence
 		String serviceName = args.get(Service.REQUESTED_SERVICE_LBL);
 
@@ -50,6 +50,8 @@ public abstract class Service implements ILoader {
 				respMap = (HashMap<String, Object>) m.invoke(this, args);
 			} catch (Exception e) {
 				e.printStackTrace();
+				// the service failed to make it to the goal . Or you do not have authorization
+				respMap.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
 			}
 		}
 		return respMap;

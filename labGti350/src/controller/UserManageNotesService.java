@@ -1,12 +1,7 @@
 package controller;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import objects.SharedNote;
-import objects.User;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,9 +12,9 @@ import entry.Gate;
 
 public class UserManageNotesService extends Service {
 
-	private static final String SHARED_NOTES_RECEIVED = "shared_notes_received";
-	private static final String SHARED_NOTES_SENT = "shared_notes_sent";
-	private static final String SHARED_NOTES_REC_NOT_READ = "shared_notes_rec_not_read";
+	public static final String SHARED_NOTES_RECEIVED = "shared_notes_received";
+	public static final String SHARED_NOTES_SENT = "shared_notes_sent";
+	public static final String SHARED_NOTES_REC_NOT_READ = "shared_notes_rec_not_read";
 
 	public HashMap<String, Object> executes(HashMap<String, String> args) {
 		load();
@@ -43,7 +38,8 @@ public class UserManageNotesService extends Service {
 			List<Object> AllSentNotes = getAllSentNotes(idUser);
 
 			// save user in an map which will sent to the client
-			argsOut.put(UserService.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX, idUser);
+			argsOut.put(UserService.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
+					idUser);
 
 			// save not read notes and associated creator in an map which will
 			// sent to the client
@@ -79,7 +75,7 @@ public class UserManageNotesService extends Service {
 
 		Query q = session
 				.createQuery(
-						"select s.note from SharedNote s, Note n where s.id.idUserCre= :idUser and s.id.idNote=n.idNote")
+						"select s.note, s.user from SharedNote s, Note n where s.user.idUser= :idUser and s.note.idNote= n.idNote")
 				.setParameter("idUser", idUser);
 
 		List<Object> sentNotes = (List<Object>) q.list();
@@ -89,24 +85,24 @@ public class UserManageNotesService extends Service {
 		return sentNotes;
 	}
 
-	private List<Object> getAllReceivedNotes(int idUser) {
+	private List<Object> getAllReceivedNotes(int idGroup) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
 		Transaction tx = session.beginTransaction();
 
 		Query q = session
 				.createQuery(
-						"select s.note from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=0 and s.id.idNote=n.idNote")
-				.setParameter("idUser", idUser);
+						"select s.note, s.user from SharedNote s, Note n where s.group.idGroup= :idGroup and s.note.idNote= n.idNote")
+				.setParameter("idGroup", idGroup);
 
 		List<Object> readNotes = (List<Object>) q.list();
 
-		tx.commit();		
+		tx.commit();
 
 		return readNotes;
 	}
 
-	private List<Object> getNotesNotReadAndAssociateCreators(int idUser) {
+	private List<Object> getNotesNotReadAndAssociateCreators(int idGroup) {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
@@ -114,15 +110,15 @@ public class UserManageNotesService extends Service {
 
 		Query q = session
 				.createQuery(
-						"select s.note, s.userByIdUserCre from SharedNote s, Note n where s.id.idUserRec= :idUser and s.notReadYet=1 and s.id.idNote=n.idNote")
-				.setParameter("idUser", idUser);
+						"select s.note, s.user.FName, s.user.LName from SharedNote s, Note n where s.group.idGroup= :idGroup and s.notReadYet=1 and s.note.idNote= n.idNote")
+				.setParameter("idGroup", idGroup);
 
 		List<Object> notesNotReadAndAssociateCreators = (List<Object>) q.list();
 
-		tx.commit();		
+		tx.commit();
 
 		return notesNotReadAndAssociateCreators;
-		}
+	}
 
 	@Override
 	public void load() {

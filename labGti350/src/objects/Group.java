@@ -1,6 +1,7 @@
-// default package
-// Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1
 package objects;
+
+// Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,8 @@ public class Group implements java.io.Serializable {
 	private int idGroup;
 	private String name;
 	private Set refrigerators = new HashSet(0);
+	private Set sharedNotes = new HashSet(0);
+	private Set orders = new HashSet(0);
 	private Set users = new HashSet(0);
 
 	public Group() {
@@ -21,10 +24,13 @@ public class Group implements java.io.Serializable {
 		this.idGroup = idGroup;
 	}
 
-	public Group(int idGroup, String name, Set refrigerators, Set users) {
+	public Group(int idGroup, String name, Set refrigerators, Set sharedNotes,
+			Set orders, Set users) {
 		this.idGroup = idGroup;
 		this.name = name;
 		this.refrigerators = refrigerators;
+		this.sharedNotes = sharedNotes;
+		this.orders = orders;
 		this.users = users;
 	}
 
@@ -50,6 +56,22 @@ public class Group implements java.io.Serializable {
 
 	public void setRefrigerators(Set refrigerators) {
 		this.refrigerators = refrigerators;
+	}
+
+	public Set getSharedNotes() {
+		return this.sharedNotes;
+	}
+
+	public void setSharedNotes(Set sharedNotes) {
+		this.sharedNotes = sharedNotes;
+	}
+
+	public Set getOrders() {
+		return this.orders;
+	}
+
+	public void setOrders(Set orders) {
+		this.orders = orders;
 	}
 
 	public Set getUsers() {

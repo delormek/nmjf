@@ -15,19 +15,18 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.validator.apply_to_ddl">false</property>
 
-		<mapping resource="objects/Food.hbm.xml" />
-		<mapping resource="objects/Group.hbm.xml" />
-		<mapping resource="objects/Foods.hbm.xml" />
-		<mapping resource="objects/User.hbm.xml" />
-		<mapping resource="objects/Note.hbm.xml" />
-		<mapping resource="objects/FoodCategory.hbm.xml" />
-		<mapping resource="objects/Refrigerator.hbm.xml" />
-		<mapping resource="objects/RemainingFood.hbm.xml" />
-		<mapping resource="objects/SharedNote.hbm.xml" />
-		<mapping resource="objects/Order.hbm.xml" />
-		<mapping resource="objects/OrderedItem.hbm.xml" />
-
-
+		
+		<mapping resource="Food.hbm.xml" />
+		<mapping resource="Group.hbm.xml" />		
+		<mapping resource="User.hbm.xml" />
+		<mapping resource="Note.hbm.xml" />
+		<mapping resource="FoodCategory.hbm.xml" />
+		<mapping resource="Refrigerator.hbm.xml" />
+		<mapping resource="RemainingFood.hbm.xml" />
+		<mapping resource="SharedNote.hbm.xml" />
+		<mapping resource="Order.hbm.xml" />
+		<mapping resource="OrderedItem.hbm.xml" />
+		
 
 	</session-factory>
 </hibernate-configuration>

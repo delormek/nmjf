@@ -3,9 +3,9 @@ package controller;
 import java.util.HashMap;
 import java.util.List;
 
+import entry.Gate;
 import objects.SharedNote;
 import objects.User;
-import entry.Gate;
 
 public class UserManageFridgeService extends Service {
 

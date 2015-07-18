@@ -1,13 +1,5 @@
-<%@page import="java.util.*"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="objects.SharedNote"%>
-<%@page import="controller.Service"%>
 <%@page import="entry.Switch"%>
-<%@page import="objects.User"%>
-<%@page import="entry.Gate"%>
-<%@page import="objects.Note"%>
-<%@page import="entry.Gate"%>
-
+<%@page import="controller.Service"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

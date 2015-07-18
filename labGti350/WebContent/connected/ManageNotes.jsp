@@ -1,6 +1,6 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="objects.SharedNote"%>
+<%@page import="controller.UserManageNotesService"%>
 <%@page import="controller.Service"%>
 <%@page import="entry.Switch"%>
 <%@page import="objects.User"%>
@@ -52,15 +52,15 @@
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-mm-yyyy");
 			List<Object> notesAndUserCre = (List<Object>) request.getSession()
 					.getAttribute(
-							SharedNote.SHARED_NOTES_REC_NOT_READ
+							UserManageNotesService.SHARED_NOTES_REC_NOT_READ
 									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 			List<Object> notesReceived = (List<Object>) request.getSession()
 					.getAttribute(
-							SharedNote.SHARED_NOTES_RECEIVED
+							UserManageNotesService.SHARED_NOTES_RECEIVED
 									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 			List<Object> notesSent = (List<Object>) request.getSession()
 					.getAttribute(
-							SharedNote.SHARED_NOTES_SENT
+							UserManageNotesService.SHARED_NOTES_SENT
 									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 		%>
 

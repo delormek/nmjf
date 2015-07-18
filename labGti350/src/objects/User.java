@@ -1,6 +1,7 @@
-// default package
-// Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1
 package objects;
+
+// Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 public class User implements java.io.Serializable {
 
-	private UserId id;
+	private Integer idUser;
 	private Group group;
 	private String FName;
 	private String LName;
@@ -23,9 +24,8 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(UserId id, Group group, String FName, String LName,
-			String mailAddress, String password) {
-		this.id = id;
+	public User(Group group, String FName, String LName, String mailAddress,
+			String password) {
 		this.group = group;
 		this.FName = FName;
 		this.LName = LName;
@@ -33,10 +33,8 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public User(UserId id, Group group, String FName, String LName,
-			String mailAddress, String password, Date birthDate,
-			Set sharedNotes, Set orders) {
-		this.id = id;
+	public User(Group group, String FName, String LName, String mailAddress,
+			String password, Date birthDate, Set sharedNotes, Set orders) {
 		this.group = group;
 		this.FName = FName;
 		this.LName = LName;
@@ -47,12 +45,12 @@ public class User implements java.io.Serializable {
 		this.orders = orders;
 	}
 
-	public UserId getId() {
-		return this.id;
+	public Integer getIdUser() {
+		return this.idUser;
 	}
 
-	public void setId(UserId id) {
-		this.id = id;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
 	public Group getGroup() {

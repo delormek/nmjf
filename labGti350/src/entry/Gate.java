@@ -35,7 +35,7 @@ public class Gate extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, java.io.IOException {
-
+		
 		HashMap<String, Object> reqParams = getParameters(req);
 		String viewpath;
 
@@ -54,21 +54,20 @@ public class Gate extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			if (respParams != null) {
-				if (!respParams.isEmpty())
-					if (Boolean.valueOf((Boolean) respParams
-							.get(Service.SERVICE_VALIDATION_RESPONSE_LBL))) {
-						req = setParameters(req, respParams);
-						this.currentLocation = (String) respParams
-								.get(Gate.NEW_LOCATION);
-					}
+			if (Boolean.valueOf((Boolean) respParams
+					.get(Service.SERVICE_VALIDATION_RESPONSE_LBL))) {
+				req = setParameters(req, respParams);
+				this.currentLocation = (String) respParams
+						.get(Gate.NEW_LOCATION);
 			}
+
 		}
 
 		System.out.println("Forwarding to " + req.getContextPath()
 				+ this.currentLocation);
 		this.getServletContext().getRequestDispatcher(this.currentLocation)
 				.forward(req, resp);
+		this.currentLocation = Gate.WELCOME_PAGE_VALUE;
 	}
 
 	/**

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Note" table="Note" catalog="mydb" optimistic-lock="version">
+    <class name="objects.Note" table="Note" catalog="mydb" optimistic-lock="version">
         <id name="idNote" type="java.lang.Integer">
             <column name="idNote" />
             <generator class="identity" />
@@ -18,7 +18,7 @@
             <key>
                 <column name="idNote" not-null="true" />
             </key>
-            <one-to-many class="SharedNote" />
+            <one-to-many class="objects.SharedNote" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,6 +1,7 @@
-// default package
-// Generated Jul 17, 2015 5:10:27 PM by Hibernate Tools 4.3.1
 package objects;
+
+// Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +11,8 @@ import java.util.Set;
  */
 public class Order implements java.io.Serializable {
 
-	private OrderId id;
+	private int idOrder;
+	private Group group;
 	private User user;
 	private Date dateOrder;
 	private Set orderedItems = new HashSet(0);
@@ -18,25 +20,36 @@ public class Order implements java.io.Serializable {
 	public Order() {
 	}
 
-	public Order(OrderId id, User user, Date dateOrder) {
-		this.id = id;
+	public Order(int idOrder, Group group, User user, Date dateOrder) {
+		this.idOrder = idOrder;
+		this.group = group;
 		this.user = user;
 		this.dateOrder = dateOrder;
 	}
 
-	public Order(OrderId id, User user, Date dateOrder, Set orderedItems) {
-		this.id = id;
+	public Order(int idOrder, Group group, User user, Date dateOrder,
+			Set orderedItems) {
+		this.idOrder = idOrder;
+		this.group = group;
 		this.user = user;
 		this.dateOrder = dateOrder;
 		this.orderedItems = orderedItems;
 	}
 
-	public OrderId getId() {
-		return this.id;
+	public int getIdOrder() {
+		return this.idOrder;
 	}
 
-	public void setId(OrderId id) {
-		this.id = id;
+	public void setIdOrder(int idOrder) {
+		this.idOrder = idOrder;
+	}
+
+	public Group getGroup() {
+		return this.group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 
 	public User getUser() {

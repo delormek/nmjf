@@ -1,11 +1,11 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="objects.SharedNote"%>
+<%@page import="objects.entry.SharedNote"%>
 <%@page import="controller.Service"%>
 <%@page import="entry.Switch"%>
-<%@page import="objects.User"%>
+<%@page import="objects.entry.User"%>
 <%@page import="entry.Gate"%>
-<%@page import="objects.Note"%>
+<%@page import="objects.entry.Note"%>
 <%@page import="entry.Gate"%>
 
 
@@ -130,13 +130,13 @@
 			<%
 				for (int i = 0; i < notesReceived.size(); i++) {
 
-					Object[] obj = (Object[]) notesReceived.get(i);
-					Note note = (Note) obj[0];
-					User createur = (User) obj[1];
-					String from_name = createur.getFName() + " "
-							+ createur.getLName().charAt(0) + ".";
-					String content = note.getContent();
-					String date = DATE_FORMAT.format(note.getDate());
+						Object[] obj = (Object[]) notesReceived.get(i);
+						Note note = (Note) obj[0];
+			User	User createuUser(User) obj[1];
+						String from_name = createur.getFName() + " "
+								+ createur.getLName().charAt(0) + ".";
+						String content = note.getContent();
+						String date = DATE_FORMAT.format(note.getDate());
 			%>
 			<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
 
