@@ -1,4 +1,3 @@
-<%@page import="entry.Switch"%>
 <%@page import="controller.Service"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -39,43 +38,26 @@
 </head>
 <body>
 
+	<script type="text/javascript">
+		function back() {
+			history.go(-1);
+			location.reload(true);
+		}
+	</script>
 
-	<div class="container">
-		<jsp:include page="session_invalidate_link.jsp" />
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<form id="form-sendNote" class="form-sendNote"
-					action="${pageContext.request.contextPath}/gate">
-					<h2>Compose</h2>
-					<textarea style="resize: none;" name="clis_note"
-						class="form-control" cols="45" rows="3" maxlength="45"
-						placeholder="Once upon a time" required autofocus></textarea>
-					<input type="hidden"
-						name="<%out.print(Switch.REQUIRED_CLASSNAME_LBL);%>"
-						value="controller.UserManageNotesService" /> <input type="hidden"
-						name="<%out.print(Service.REQUESTED_SERVICE_LBL);%>"
-						value="shareNote" /> <br />
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Share</button>
-				</form>
-			</div>
+	</br>
+	<div class="row">
+		<div class="col-xs-2 col-xs-offset-3  col-sm-12 col-md-4 col-lg-4">
+			<a class="btn btn-success" onclick="back();"> Back</a>
 		</div>
-		<br />
-		<div class="row">
-			<div
-				class="col-xs-12 col-sm-12 col-md-4 col-lg-4 alert alert-success"
-				role="alert">
-				<strong> Paste on the fridge ! </strong>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 alert alert-danger"
-				role="alert">
-				<strong>Oh snap!</strong> Something mixed up with your note. Do not
-				worry, we are <strong>running a diagnostic !</strong>
-			</div>
+		<div class="col-xs-1 col-sm-12 col-md-4 col-lg-4">
+			<a class="btn btn-warning"
+				href="${pageContext.request.contextPath}<%="/gate?"+Service.SESSION_INVALIDATE_BOOL+"=TRUE"%>">
+				Sign out</a>
 		</div>
 
 	</div>
+	</br>
 
 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

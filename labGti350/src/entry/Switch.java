@@ -8,6 +8,8 @@ package entry;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 public class Switch {
 
 	/*This resources has to be used in jsp file to specify the name of 
@@ -18,7 +20,7 @@ public class Switch {
 	/*This is the method a class which inherit from Service has to execute 
 	 * DO NOT CHANGE THAT VALUE EVER !*/
 	public static final String SERVICE_METHOD_EXECUTES_NAME = "executes";
-	
+	private HttpSession session;
 
 	public Switch() {}
 

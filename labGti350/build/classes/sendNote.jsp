@@ -41,7 +41,7 @@
 
 
 	<div class="container">
-
+		<jsp:include page="session_invalidate_link.jsp" />
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<form id="form-sendNote" class="form-sendNote"

@@ -35,12 +35,29 @@ public class Gate extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, java.io.IOException {
-		
+
 		HashMap<String, Object> reqParams = getParameters(req);
 		String viewpath;
 
 		// if reqParams is empty then it means it a new client
 		if (!reqParams.isEmpty()) {
+
+			// if client asking for sign out.
+			if (reqParams.containsKey(Service.SESSION_INVALIDATE_BOOL)) {
+				Boolean clientSignOut = Boolean.valueOf((String)reqParams
+						.get(Service.SESSION_INVALIDATE_BOOL));
+				if (clientSignOut) {
+					req.getSession().invalidate();
+					this.currentLocation = Gate.WELCOME_PAGE_VALUE;
+					
+					System.out.println("Forwarding to " + req.getContextPath()
+							+ this.currentLocation);
+					this.getServletContext().getRequestDispatcher(this.currentLocation)
+							.forward(req, resp);
+					return;
+				}
+			}
+
 			// get current location
 			if ((viewpath = (String) reqParams.get(CURRENT_LOCATION)) != null)
 				this.currentLocation = viewpath;
@@ -61,13 +78,14 @@ public class Gate extends HttpServlet {
 						.get(Gate.NEW_LOCATION);
 			}
 
-		}
+		} else
+			this.currentLocation = Gate.WELCOME_PAGE_VALUE;
 
 		System.out.println("Forwarding to " + req.getContextPath()
 				+ this.currentLocation);
 		this.getServletContext().getRequestDispatcher(this.currentLocation)
 				.forward(req, resp);
-		this.currentLocation = Gate.WELCOME_PAGE_VALUE;
+
 	}
 
 	/**
@@ -93,11 +111,10 @@ public class Gate extends HttpServlet {
 			Object value = req.getSession().getAttribute(key).toString();
 			reqParams.put(key, value);
 		}
-		
-		
+
 		System.out.println("Current Session number : "
 				+ req.getSession().getId());
-		
+
 		return reqParams;
 
 	}

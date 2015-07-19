@@ -41,6 +41,7 @@
     <![endif]-->
 </head>
 <body>
+
 	<%
 		String name = (String) request.getSession().getAttribute(
 				UserService.USER_NAME_STYLE1
@@ -54,7 +55,7 @@
 
 		<div class="row">
 
-			<div class=" col-xs-12 col-xs-offset-3 col-sm-12 col-md-4 col-lg-4">
+			<div class=" col-xs-5 col-xs-offset-3 col-sm-12 col-md-4 col-lg-4">
 
 
 
@@ -75,12 +76,12 @@
 		</br>
 		<div class="row">
 
-			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+			<div class="col-xs-5 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4" >
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=launchCartManagement"%>">
-					<img data-holder-rendered="true"
+					<img  
 					src="${pageContext.request.contextPath}/img/menu_icon/cart_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
+					style="width: 100px; height: 100px; border-radius: 20px" class="img-thumbnail"
 					alt="100x100">
 				</a>
 			</div>
@@ -89,9 +90,9 @@
 
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageRecipeService&"+Service.REQUESTED_SERVICE_LBL+"=launchRecipesManagement"%>">
-					<img data-holder-rendered="true"
+					<img  
 					src="${pageContext.request.contextPath}/img/menu_icon/recipe_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
+					style="width: 100px; height: 100px; border-radius: 20px" class="img-thumbnail"
 					alt="100x100">
 				</a>
 			</div>
@@ -99,13 +100,13 @@
 		<br />
 		<div class="row">
 
-			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+			<div class="col-xs-5 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4">
 
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
-					<img data-holder-rendered="true"
+					<img 
 					src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
+					style="width: 100px; height: 100px; border-radius: 20px" class="img-thumbnail"
 					alt="100x100">
 				</a>
 			</div>
@@ -115,9 +116,9 @@
 
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
-					<img
+					<img 
 					src="${pageContext.request.contextPath}/img/menu_icon/note_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
+					style="width: 100px; height: 100px; border-radius: 20px" class="img-thumbnail"
 					alt="100x100">
 
 				</a>
@@ -126,13 +127,13 @@
 		<br />
 		<div class="row">
 
-			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+			<div class="col-xs-5 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4">
 
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
-					<img
+					<img 
 					src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
+					style="width: 100px; height: 100px; border-radius: 20px" class="img-thumbnail"
 					alt="100x100">
 				</a>
 
@@ -142,17 +143,19 @@
 
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
-					<img
+					<img "
 					src="${pageContext.request.contextPath}/img/menu_icon/settings_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
+					style="width: 100px; height: 100px; border-radius: 20px" class="img-thumbnail"
 					alt="100x100">
 				</a>
 			</div>
 		</div>
 
+
+
 	</div>
 
-
+<jsp:include page="session_invalidate_link.jsp" />
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script
 		src="${pageContext.request.contextPath}/css/ie10-viewport-bug-workaround.js"></script>

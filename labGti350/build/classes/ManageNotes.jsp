@@ -65,11 +65,13 @@
 		%>
 
 		<div>
+			<jsp:include page="session_invalidate_link.jsp" />
 			<p>
 				<a href="${pageContext.request.contextPath}/connected/sendNote.jsp">
 					<button class="btn btn-danger">Compose</button>
 				</a>
 			</p>
+
 		</div>
 		<!-- -------------------------------NOTES ON THE FRIDGE ------------------ -->
 		<div class="page-header">

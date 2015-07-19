@@ -60,7 +60,7 @@ public class UserManageNotesService extends Service {
 			int idGroup = u.getGroup().getIdGroup();
 
 			List<Object> notesNotReadAndAssociateCreators = getNotesNotReadAndAssociateCreators(idGroup,idUser);
-			List<Object> AllReceivednotes = getAllReceivedNotes(idGroup);
+			List<Object> AllReceivednotes = getAllReceivedNotes(idGroup,idUser);
 			List<Object> AllSentNotes = getAllSentNotes(idUser);
 
 			// save user in an map which will sent to the client
@@ -111,15 +111,17 @@ public class UserManageNotesService extends Service {
 		return sentNotes;
 	}
 
-	private List<Object> getAllReceivedNotes(int idGroup) {
+	private List<Object> getAllReceivedNotes(int idGroup,int idUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
 		Transaction tx = session.beginTransaction();
 
 		Query q = session
 				.createQuery(
-						"select s.note, s.user.FName, s.user.LName from SharedNote s, Note n where s.group.idGroup= :idGroup and s.notReadYet=0 and s.note.idNote= n.idNote")
-				.setParameter("idGroup", idGroup);
+						"select s.note, s.user.FName, s.user.LName from SharedNote s, Note n where s.group.idGroup= :idGroup and s.user.idUser <> :idUser"
+						+ " and s.notReadYet=0 and s.note.idNote= n.idNote");
+				q.setParameter("idGroup", idGroup);
+				q.setParameter("idUser", idUser);
 
 		List<Object> readNotes = (List<Object>) q.list();
 

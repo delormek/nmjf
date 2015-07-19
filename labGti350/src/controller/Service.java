@@ -23,6 +23,7 @@ public abstract class Service implements ILoader {
 	 */
 	public static final String SERVICE_VALIDATION_RESPONSE_LBL = "service_response";
 	// ======================================================================
+	public static final String SESSION_INVALIDATE_BOOL = "session_invalidate_bool";
 
 	// lists of services' names
 	protected ArrayList<String> servicesList;

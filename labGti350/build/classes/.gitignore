@@ -1,16 +1,3 @@
-/Group.hbm.xml
-/hibernate.reveng.xml
 /controller/
-/objects/
-/Food.hbm.xml
-/FoodCategory.hbm.xml
-/Foods.hbm.xml
-/Note.hbm.xml
-/Order.hbm.xml
-/OrderedItem.hbm.xml
-/Refrigerator.hbm.xml
-/RemainingFood.hbm.xml
-/SharedNote.hbm.xml
-/User.hbm.xml
 /entry/
-/hibernate.cfg.xml
+/session_invalidate_link.jsp

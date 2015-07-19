@@ -5,7 +5,8 @@
 	<display-name>NMJF</display-name>
 	<servlet>
 		<servlet-name>gate</servlet-name>
-		<servlet-class>entry.Gate</servlet-class>			
+		<servlet-class>entry.Gate</servlet-class>	
+		<load-on-startup>1</load-on-startup>		
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>gate</servlet-name>
