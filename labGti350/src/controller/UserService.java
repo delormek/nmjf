@@ -25,6 +25,7 @@ public class UserService extends Service {
 	public static final String NB_SHARED_NOTES_REC = "nb_shared_notes_rec";
 	public static final String USER_NAME_STYLE1 = "user_name_style1";
 	public static final String USER_ID = "user_id";
+	
 
 	public HashMap<String, Object> executes(HashMap<String, String> args) {
 		load();
@@ -74,8 +75,10 @@ public class UserService extends Service {
 
 				q = session1
 						.createQuery(
-								"select count(*) from SharedNote s where s.group.idGroup= :idGroup and s.notReadYet=1 ")
-						.setParameter("idGroup", user.getGroup().getIdGroup());
+								"select count(*) from SharedNote s where s.group.idGroup= :idGroup and s.notReadYet=1  "
+								+ "and s.user.idUser <> :idUser");
+						q.setParameter("idGroup", user.getGroup().getIdGroup());
+						q.setParameter("idUser", user.getIdUser());
 
 				Long nbNotesNotRead = (long) 0;
 				nbNotesNotRead = (Long) q.uniqueResult();
@@ -118,6 +121,7 @@ public class UserService extends Service {
 		 */
 		if (this.servicesList.isEmpty()) {
 			this.servicesList.add("authentication");
+			
 		}
 
 	}

@@ -93,9 +93,11 @@ public class Gate extends HttpServlet {
 			Object value = req.getSession().getAttribute(key).toString();
 			reqParams.put(key, value);
 		}
-
+		
+		
 		System.out.println("Current Session number : "
 				+ req.getSession().getId());
+		
 		return reqParams;
 
 	}

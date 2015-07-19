@@ -81,9 +81,9 @@
 
 					Object[] obj = (Object[]) notesAndUserCre.get(i);
 					Note note = (Note) obj[0];
-					User createur = (User) obj[1];
-					String from_name = createur.getFName() + " "
-							+ createur.getLName().charAt(0) + ".";
+
+					String from_name = (String) obj[1] + " "
+							+ ((String) obj[2]).charAt(0) + ".";
 					String content = note.getContent();
 					String date = DATE_FORMAT.format(note.getDate());
 			%>
@@ -104,7 +104,10 @@
 							<%=content%>
 						</p>
 						<p>
-							<a class="btn btn-success" href="#" role="button"> Read !</a>
+							<a class="btn btn-success"
+								href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+
+							Service.REQUESTED_SERVICE_LBL+"=noteRead&"+UserManageNotesService.ID_NOTE+"="+note.getIdNote()%>"
+								role="button"> Read !</a>
 						</p>
 					</div>
 
@@ -132,9 +135,9 @@
 
 					Object[] obj = (Object[]) notesReceived.get(i);
 					Note note = (Note) obj[0];
-					User createur = (User) obj[1];
-					String from_name = createur.getFName() + " "
-							+ createur.getLName().charAt(0) + ".";
+
+					String from_name = (String) obj[1] + " "
+							+ ((String) obj[2]).charAt(0) + ".";
 					String content = note.getContent();
 					String date = DATE_FORMAT.format(note.getDate());
 			%>
@@ -154,9 +157,7 @@
 						<p>
 							<%=content%>
 						</p>
-						<p>
-							<a class="btn btn-success" href="#" role="button"> Read !</a>
-						</p>
+
 					</div>
 
 				</div>

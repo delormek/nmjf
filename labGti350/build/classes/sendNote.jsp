@@ -47,13 +47,13 @@
 				<form id="form-sendNote" class="form-sendNote"
 					action="${pageContext.request.contextPath}/gate">
 					<h2>Compose</h2>
-					<textarea  style="resize: none;" name="clis_note"
-						class="form-control" cols="45"rows="3" maxlength="45"
-						placeholder="Once upon a time" required autofocus ></textarea>
-					<input  type="hidden"
+					<textarea style="resize: none;" name="clis_note"
+						class="form-control" cols="45" rows="3" maxlength="45"
+						placeholder="Once upon a time" required autofocus></textarea>
+					<input type="hidden"
 						name="<%out.print(Switch.REQUIRED_CLASSNAME_LBL);%>"
-						value="controller.UserManageNotesService" /> <input 
-						 type="hidden" name="<%out.print(Service.REQUESTED_SERVICE_LBL);%>"
+						value="controller.UserManageNotesService" /> <input type="hidden"
+						name="<%out.print(Service.REQUESTED_SERVICE_LBL);%>"
 						value="shareNote" /> <br />
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Share</button>
 				</form>
@@ -61,9 +61,10 @@
 		</div>
 		<br />
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 alert alert-success"
+			<div
+				class="col-xs-12 col-sm-12 col-md-4 col-lg-4 alert alert-success"
 				role="alert">
-				 <strong> Paste on the fridge ! </strong>
+				<strong> Paste on the fridge ! </strong>
 			</div>
 		</div>
 		<div class="row">
@@ -74,8 +75,11 @@
 			</div>
 		</div>
 
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script
-			src="${pageContext.request.contextPath}/css/ie10-viewport-bug-workaround.js"></script>
+	</div>
+
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script
+		src="${pageContext.request.contextPath}/css/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

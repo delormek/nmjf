@@ -54,15 +54,15 @@
 
 		<div class="row">
 
-			<div
-				class=" col-xs-12 col-xs-offset-3 col-sm-12 col-md-4 col-lg-4">
+			<div class=" col-xs-12 col-xs-offset-3 col-sm-12 col-md-4 col-lg-4">
 
 
 
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
 					<h3 style="text-decoration: underline;">
-						Hi <% out.print(name);
+						Hi
+						<% out.print(name);
 						if (nbNotesNotRead > 0) {
 							out.print("<span class=\"badge\" style=\"color: red;\">"+ nbNotesNotRead + "</span>");
 						}
@@ -75,8 +75,7 @@
 		</br>
 		<div class="row">
 
-			<div
-				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=launchCartManagement"%>">
 					<img data-holder-rendered="true"
@@ -86,22 +85,8 @@
 				</a>
 			</div>
 
-			<div
-				class="col-xs-6  col-sm-12 col-md-4 col-lg-4">
-				<a
-					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
-					<img data-holder-rendered="true"
-					src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
-					alt="100x100">
-				</a>
-			</div>
-		</div>
-		<br />
-		<div class="row">
+			<div class="col-xs-6  col-sm-12 col-md-4 col-lg-4">
 
-			<div
-				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageRecipeService&"+Service.REQUESTED_SERVICE_LBL+"=launchRecipesManagement"%>">
 					<img data-holder-rendered="true"
@@ -110,24 +95,24 @@
 					alt="100x100">
 				</a>
 			</div>
-
-
-			<div
-				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
-				<a
-					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
-					<img
-					src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
-					style="width: 100px; height: 100px;" class="img-thumbnail"
-					alt="100x100">
-				</a>
-			</div>
 		</div>
 		<br />
 		<div class="row">
 
-			<div
-				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageFridgeService&"+Service.REQUESTED_SERVICE_LBL+"=launchFridgeManagement"%>">
+					<img data-holder-rendered="true"
+					src="${pageContext.request.contextPath}/img/menu_icon/fridge_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
+			</div>
+
+
+			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageNotesService&"+Service.REQUESTED_SERVICE_LBL+"=launchNotesManagement"%>">
 					<img
@@ -137,9 +122,24 @@
 
 				</a>
 			</div>
+		</div>
+		<br />
+		<div class="row">
 
-			<div
-				class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+
+				<a
+					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.SupportUserService&"+Service.REQUESTED_SERVICE_LBL+"=displayManual"%>">
+					<img
+					src="${pageContext.request.contextPath}/img/menu_icon/help_icon.png"
+					style="width: 100px; height: 100px;" class="img-thumbnail"
+					alt="100x100">
+				</a>
+
+			</div>
+
+			<div class="col-xs-6 col-sm-12 col-md-4 col-lg-4">
+
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
 					<img
