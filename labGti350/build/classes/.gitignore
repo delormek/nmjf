@@ -2,3 +2,16 @@
 /entry/
 /session_invalidate_link.jsp
 /ManageCart.jsp
+/objects/
+/hibernate.cfg.xml
+/hibernate.reveng.xml
+/Note.hbm.xml
+/Order.hbm.xml
+/OrderedItem.hbm.xml
+/Refrigerator.hbm.xml
+/RemainingFood.hbm.xml
+/SharedNote.hbm.xml
+/User.hbm.xml
+/Food.hbm.xml
+/FoodCategory.hbm.xml
+/Group.hbm.xml

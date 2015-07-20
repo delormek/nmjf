@@ -10,13 +10,7 @@
         </id>
         <property name="name" type="string">
             <column name="name" length="45" not-null="true" />
-        </property>
-        <property name="description" type="string">
-            <column name="Description" length="45" not-null="true" />
-        </property>
-        <property name="urlImage" type="string">
-            <column name="url_image" length="45" not-null="true" />
-        </property>
+        </property>       
         <set name="foods" table="Food" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idCategory" />

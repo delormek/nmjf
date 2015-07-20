@@ -41,27 +41,6 @@
         <property name="legacyId" type="java.lang.Integer">
             <column name="legacy_id" />
         </property>
-        <property name="foodGroup" type="string">
-            <column name="food_group" />
-        </property>
-        <property name="foodSubgroup" type="string">
-            <column name="food_subgroup" />
-        </property>
-        <property name="foodType" type="string">
-            <column name="food_type" not-null="true" />
-        </property>
-        <property name="createdAt" type="timestamp">
-            <column name="created_at" length="19" />
-        </property>
-        <property name="updatedAt" type="timestamp">
-            <column name="updated_at" length="19" />
-        </property>
-        <property name="creatorId" type="java.lang.Integer">
-            <column name="creator_id" />
-        </property>
-        <property name="updaterId" type="java.lang.Integer">
-            <column name="updater_id" />
-        </property>
         <set name="orderedItems" table="OrderedItem" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idFood" not-null="true" />

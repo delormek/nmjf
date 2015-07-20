@@ -23,21 +23,15 @@ public class Food implements java.io.Serializable {
 	private Integer pictureFileSize;
 	private Date pictureUpdatedAt;
 	private Integer legacyId;
-	private String foodGroup;
-	private String foodSubgroup;
-	private String foodType;
-	private Date createdAt;
-	private Date updatedAt;
-	private Integer creatorId;
-	private Integer updaterId;
+
 	private Set orderedItems = new HashSet(0);
 
 	public Food() {
 	}
 
-	public Food(String name, String foodType) {
+	public Food(String name) {
 		this.name = name;
-		this.foodType = foodType;
+
 	}
 
 	public Food(FoodCategory foodCategory, String name, String nameScientific,
@@ -58,13 +52,7 @@ public class Food implements java.io.Serializable {
 		this.pictureFileSize = pictureFileSize;
 		this.pictureUpdatedAt = pictureUpdatedAt;
 		this.legacyId = legacyId;
-		this.foodGroup = foodGroup;
-		this.foodSubgroup = foodSubgroup;
-		this.foodType = foodType;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.creatorId = creatorId;
-		this.updaterId = updaterId;
+
 		this.orderedItems = orderedItems;
 	}
 
@@ -162,62 +150,6 @@ public class Food implements java.io.Serializable {
 
 	public void setLegacyId(Integer legacyId) {
 		this.legacyId = legacyId;
-	}
-
-	public String getFoodGroup() {
-		return this.foodGroup;
-	}
-
-	public void setFoodGroup(String foodGroup) {
-		this.foodGroup = foodGroup;
-	}
-
-	public String getFoodSubgroup() {
-		return this.foodSubgroup;
-	}
-
-	public void setFoodSubgroup(String foodSubgroup) {
-		this.foodSubgroup = foodSubgroup;
-	}
-
-	public String getFoodType() {
-		return this.foodType;
-	}
-
-	public void setFoodType(String foodType) {
-		this.foodType = foodType;
-	}
-
-	public Date getCreatedAt() {
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return this.updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Integer getCreatorId() {
-		return this.creatorId;
-	}
-
-	public void setCreatorId(Integer creatorId) {
-		this.creatorId = creatorId;
-	}
-
-	public Integer getUpdaterId() {
-		return this.updaterId;
-	}
-
-	public void setUpdaterId(Integer updaterId) {
-		this.updaterId = updaterId;
 	}
 
 	public Set getOrderedItems() {

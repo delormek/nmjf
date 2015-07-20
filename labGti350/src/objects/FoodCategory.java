@@ -12,8 +12,7 @@ public class FoodCategory implements java.io.Serializable {
 
 	private Integer idFoodCategory;
 	private String name;
-	private String description;
-	private String urlImage;
+
 	private Set foods = new HashSet(0);
 
 	public FoodCategory() {
@@ -21,15 +20,13 @@ public class FoodCategory implements java.io.Serializable {
 
 	public FoodCategory(String name, String description, String urlImage) {
 		this.name = name;
-		this.description = description;
-		this.urlImage = urlImage;
+
 	}
 
 	public FoodCategory(String name, String description, String urlImage,
 			Set foods) {
 		this.name = name;
-		this.description = description;
-		this.urlImage = urlImage;
+
 		this.foods = foods;
 	}
 
@@ -47,22 +44,6 @@ public class FoodCategory implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getUrlImage() {
-		return this.urlImage;
-	}
-
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
 	}
 
 	public Set getFoods() {
