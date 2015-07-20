@@ -64,14 +64,18 @@
 									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
 		%>
 
-		<div>
-			<jsp:include page="session_invalidate_link.jsp" />
-			<p>
-				<a href="${pageContext.request.contextPath}/connected/sendNote.jsp">
-					<button class="btn btn-danger">Compose</button>
-				</a>
-			</p>
 
+		<jsp:include page="session_invalidate_link.jsp" />
+		</br> </br>
+		<div class='row'>
+			<div class="col-xs-6 col-xs-offset-4 col-sm-12 col-md-4 col-lg-4">
+				<p>
+					<a href="${pageContext.request.contextPath}/connected/sendNote.jsp">
+						<button class="btn btn-danger">Compose</button>
+					</a>
+				</p>
+
+			</div>
 		</div>
 		<!-- -------------------------------NOTES ON THE FRIDGE ------------------ -->
 		<div class="page-header">
@@ -79,17 +83,17 @@
 		</div>
 		<div class='row'>
 			<%
-				for (int i = 0; i < notesAndUserCre.size(); i++) {
+					for (int i = 0; i < notesAndUserCre.size(); i++) {
 
-					Object[] obj = (Object[]) notesAndUserCre.get(i);
-					Note note = (Note) obj[0];
+						Object[] obj = (Object[]) notesAndUserCre.get(i);
+						Note note = (Note) obj[0];
 
-					String from_name = (String) obj[1] + " "
-							+ ((String) obj[2]).charAt(0) + ".";
-					String content = note.getContent();
-					String date = DATE_FORMAT.format(note.getDate());
-			%>
-			<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
+						String from_name = (String) obj[1] + " "
+								+ ((String) obj[2]).charAt(0) + ".";
+						String content = note.getContent();
+						String date = DATE_FORMAT.format(note.getDate());
+				%>
+			<div class='col-xs-6 col-sm-12 col-md-4 col-lg-4'>
 
 				<div class="panel panel-warning">
 
@@ -118,8 +122,8 @@
 
 			</div>
 			<%
-				}
-			%>
+					}
+				%>
 		</div>
 		<div class="alert alert-info" role="alert">
 			<strong> Checked ! </strong> It 's been archived.
@@ -133,17 +137,17 @@
 		</div>
 		<div class='row'>
 			<%
-				for (int i = 0; i < notesReceived.size(); i++) {
+					for (int i = 0; i < notesReceived.size(); i++) {
 
-					Object[] obj = (Object[]) notesReceived.get(i);
-					Note note = (Note) obj[0];
+						Object[] obj = (Object[]) notesReceived.get(i);
+						Note note = (Note) obj[0];
 
-					String from_name = (String) obj[1] + " "
-							+ ((String) obj[2]).charAt(0) + ".";
-					String content = note.getContent();
-					String date = DATE_FORMAT.format(note.getDate());
-			%>
-			<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
+						String from_name = (String) obj[1] + " "
+								+ ((String) obj[2]).charAt(0) + ".";
+						String content = note.getContent();
+						String date = DATE_FORMAT.format(note.getDate());
+				%>
+			<div class='col-xs-6 col-sm-12 col-md-4 col-lg-4'>
 
 				<div class="panel panel-warning">
 
@@ -167,8 +171,8 @@
 
 			</div>
 			<%
-				}
-			%>
+					}
+				%>
 		</div>
 
 
@@ -181,13 +185,13 @@
 		</div>
 		<div class='row'>
 			<%
-				for (int i = 0; i < notesSent.size(); i++) {
+					for (int i = 0; i < notesSent.size(); i++) {
 
-					Note note = (Note) notesSent.get(i);
-					String content = note.getContent();
-					String date = DATE_FORMAT.format(note.getDate());
-			%>
-			<div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
+						Note note = (Note) notesSent.get(i);
+						String content = note.getContent();
+						String date = DATE_FORMAT.format(note.getDate());
+				%>
+			<div class='col-xs-6 col-sm-12 col-md-4 col-lg-4'>
 
 				<div class="panel panel-warning">
 
@@ -208,8 +212,8 @@
 
 			</div>
 			<%
-				}
-			%>
+					}
+				%>
 		</div>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script
