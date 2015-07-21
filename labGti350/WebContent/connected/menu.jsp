@@ -43,13 +43,11 @@
 <body>
 
 	<%
-		String name = (String) request.getSession().getAttribute(
-				UserService.USER_NAME_STYLE1
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX);
+		String name = (String) request.getAttribute(
+				UserService.USER_NAME_STYLE1);
 
-		Long nbNotesNotRead = (Long) request.getSession().getAttribute(
-				UserService.NB_SHARED_NOTES_REC
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX);
+		Long nbNotesNotRead = (Long) request.getAttribute(
+				UserService.NB_SHARED_NOTES_REC);
 	%>
 	<div class="container">
 
@@ -147,7 +145,6 @@
 				<a
 					href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageSettingsService&"+Service.REQUESTED_SERVICE_LBL+"=launchSettingsManagement"%>">
 					<img
-					"
 					src="${pageContext.request.contextPath}/img/menu_icon/settings_icon.png"
 					style="width: 100px; height: 100px; border-radius: 20px"
 					class="img-thumbnail" alt="100x100">

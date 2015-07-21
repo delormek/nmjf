@@ -50,18 +50,12 @@
 	<div class="container">
 		<%
 			SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-mm-yyyy");
-			List<Object> notesAndUserCre = (List<Object>) request.getSession()
-					.getAttribute(
-							UserManageNotesService.SHARED_NOTES_REC_NOT_READ
-									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
-			List<Object> notesReceived = (List<Object>) request.getSession()
-					.getAttribute(
-							UserManageNotesService.SHARED_NOTES_RECEIVED
-									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
-			List<Object> notesSent = (List<Object>) request.getSession()
-					.getAttribute(
-							UserManageNotesService.SHARED_NOTES_SENT
-									+ Gate.SESSION_ATTRIBUTE_SUFFIX);
+			List<Object> notesAndUserCre = (List<Object>) request
+					.getAttribute(UserManageNotesService.SHARED_NOTES_REC_NOT_READ);
+			List<Object> notesReceived = (List<Object>) request
+					.getAttribute(UserManageNotesService.SHARED_NOTES_RECEIVED);
+			List<Object> notesSent = (List<Object>) request
+					.getAttribute(UserManageNotesService.SHARED_NOTES_SENT);
 		%>
 
 
@@ -83,16 +77,16 @@
 		</div>
 		<div class='row'>
 			<%
-					for (int i = 0; i < notesAndUserCre.size(); i++) {
+				for (int i = 0; i < notesAndUserCre.size(); i++) {
 
-						Object[] obj = (Object[]) notesAndUserCre.get(i);
-						Note note = (Note) obj[0];
+					Object[] obj = (Object[]) notesAndUserCre.get(i);
+					Note note = (Note) obj[0];
 
-						String from_name = (String) obj[1] + " "
-								+ ((String) obj[2]).charAt(0) + ".";
-						String content = note.getContent();
-						String date = DATE_FORMAT.format(note.getDate());
-				%>
+					String from_name = (String) obj[1] + " "
+							+ ((String) obj[2]).charAt(0) + ".";
+					String content = note.getContent();
+					String date = DATE_FORMAT.format(note.getDate());
+			%>
 			<div class='col-xs-6 col-sm-12 col-md-4 col-lg-4'>
 
 				<div class="panel panel-warning">
@@ -122,8 +116,8 @@
 
 			</div>
 			<%
-					}
-				%>
+				}
+			%>
 		</div>
 		<div class="alert alert-info" role="alert">
 			<strong> Checked ! </strong> It 's been archived.
@@ -137,16 +131,16 @@
 		</div>
 		<div class='row'>
 			<%
-					for (int i = 0; i < notesReceived.size(); i++) {
+				for (int i = 0; i < notesReceived.size(); i++) {
 
-						Object[] obj = (Object[]) notesReceived.get(i);
-						Note note = (Note) obj[0];
+					Object[] obj = (Object[]) notesReceived.get(i);
+					Note note = (Note) obj[0];
 
-						String from_name = (String) obj[1] + " "
-								+ ((String) obj[2]).charAt(0) + ".";
-						String content = note.getContent();
-						String date = DATE_FORMAT.format(note.getDate());
-				%>
+					String from_name = (String) obj[1] + " "
+							+ ((String) obj[2]).charAt(0) + ".";
+					String content = note.getContent();
+					String date = DATE_FORMAT.format(note.getDate());
+			%>
 			<div class='col-xs-6 col-sm-12 col-md-4 col-lg-4'>
 
 				<div class="panel panel-warning">
@@ -171,8 +165,8 @@
 
 			</div>
 			<%
-					}
-				%>
+				}
+			%>
 		</div>
 
 
@@ -185,12 +179,12 @@
 		</div>
 		<div class='row'>
 			<%
-					for (int i = 0; i < notesSent.size(); i++) {
+				for (int i = 0; i < notesSent.size(); i++) {
 
-						Note note = (Note) notesSent.get(i);
-						String content = note.getContent();
-						String date = DATE_FORMAT.format(note.getDate());
-				%>
+					Note note = (Note) notesSent.get(i);
+					String content = note.getContent();
+					String date = DATE_FORMAT.format(note.getDate());
+			%>
 			<div class='col-xs-6 col-sm-12 col-md-4 col-lg-4'>
 
 				<div class="panel panel-warning">
@@ -212,8 +206,8 @@
 
 			</div>
 			<%
-					}
-				%>
+				}
+			%>
 		</div>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<script

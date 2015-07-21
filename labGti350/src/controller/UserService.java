@@ -95,11 +95,11 @@ public class UserService extends Service {
 				String userName = user.getFName() + " "
 						+ user.getLName().charAt(0) + ".";
 				argsOut.put(UserService.USER_NAME_STYLE1
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX, userName);
+						, userName);
 
 				// save notes in an map which will sent to the client
 				argsOut.put(UserService.NB_SHARED_NOTES_REC
-						+ Gate.SESSION_ATTRIBUTE_SUFFIX, nbNotesNotRead);
+						, nbNotesNotRead);
 
 				// give new location to go
 				argsOut.put(Gate.NEW_LOCATION, "/connected/menu.jsp");

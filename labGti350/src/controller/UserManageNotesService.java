@@ -70,18 +70,18 @@ public class UserManageNotesService extends Service {
 			// save not read notes and associated creator in an map which will
 			// sent to the client
 			argsOut.put(UserManageNotesService.SHARED_NOTES_REC_NOT_READ
-					+ Gate.SESSION_ATTRIBUTE_SUFFIX,
+					,
 					notesNotReadAndAssociateCreators);
 
 			// save all received notes in an map which will
 			// sent to the client
 			argsOut.put(UserManageNotesService.SHARED_NOTES_RECEIVED
-					+ Gate.SESSION_ATTRIBUTE_SUFFIX, AllReceivednotes);
+					, AllReceivednotes);
 
 			// save all sent notes in an map which will
 			// sent to the client
 			argsOut.put(UserManageNotesService.SHARED_NOTES_SENT
-					+ Gate.SESSION_ATTRIBUTE_SUFFIX, AllSentNotes);
+					, AllSentNotes);
 
 			// give new location to go
 			argsOut.put(Gate.NEW_LOCATION, "/connected/ManageNotes.jsp");
@@ -241,16 +241,17 @@ public class UserManageNotesService extends Service {
 			
 
 			tx.commit();
+			
+			argsOut = launchNotesManagement(argsIn);
 
 			// save user in an map which will sent to the client
 			argsOut.put(UserService.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX,
 					idUser);
 			
-			argsOut.put(UserManageNotesService.NB_NOTES_UPDATED + Gate.SESSION_ATTRIBUTE_SUFFIX,
-					nbRowsUpdated);
+			argsOut.put(UserManageNotesService.NB_NOTES_UPDATED, nbRowsUpdated);
 
 			// give new location to go
-			argsOut.put(Gate.NEW_LOCATION, "/connected/menu.jsp");
+			argsOut.put(Gate.NEW_LOCATION, "/connected/ManageNotes.jsp");
 			// authorization is given
 			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
 

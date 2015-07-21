@@ -74,7 +74,6 @@
 				worry, we are <strong>running a diagnostic !</strong>
 			</div>
 		</div>
-
 	</div>
 
 
