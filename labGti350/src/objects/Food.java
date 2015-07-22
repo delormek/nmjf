@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1
+// Generated Jul 22, 2015 3:20:37 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,24 +23,21 @@ public class Food implements java.io.Serializable {
 	private Integer pictureFileSize;
 	private Date pictureUpdatedAt;
 	private Integer legacyId;
-
 	private Set orderedItems = new HashSet(0);
+	private Set recipeFoods = new HashSet(0);
 
 	public Food() {
 	}
 
 	public Food(String name) {
 		this.name = name;
-
 	}
 
 	public Food(FoodCategory foodCategory, String name, String nameScientific,
 			String description, String itisId, String wikipediaId,
 			String pictureFileName, String pictureContentType,
 			Integer pictureFileSize, Date pictureUpdatedAt, Integer legacyId,
-			String foodGroup, String foodSubgroup, String foodType,
-			Date createdAt, Date updatedAt, Integer creatorId,
-			Integer updaterId, Set orderedItems) {
+			Set orderedItems, Set recipeFoods) {
 		this.foodCategory = foodCategory;
 		this.name = name;
 		this.nameScientific = nameScientific;
@@ -52,8 +49,8 @@ public class Food implements java.io.Serializable {
 		this.pictureFileSize = pictureFileSize;
 		this.pictureUpdatedAt = pictureUpdatedAt;
 		this.legacyId = legacyId;
-
 		this.orderedItems = orderedItems;
+		this.recipeFoods = recipeFoods;
 	}
 
 	public Integer getId() {
@@ -158,6 +155,14 @@ public class Food implements java.io.Serializable {
 
 	public void setOrderedItems(Set orderedItems) {
 		this.orderedItems = orderedItems;
+	}
+
+	public Set getRecipeFoods() {
+		return this.recipeFoods;
+	}
+
+	public void setRecipeFoods(Set recipeFoods) {
+		this.recipeFoods = recipeFoods;
 	}
 
 }

@@ -1,3 +1,14 @@
 /controller/
-/entry/
 /objects/
+/Food.hbm.xml
+/FoodCategory.hbm.xml
+/Group.hbm.xml
+/Note.hbm.xml
+/Order.hbm.xml
+/OrderedItem.hbm.xml
+/Recipe.hbm.xml
+/RecipeFood.hbm.xml
+/Refrigerator.hbm.xml
+/RemainingFood.hbm.xml
+/SharedNote.hbm.xml
+/User.hbm.xml

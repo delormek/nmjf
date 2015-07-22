@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-	<session-factory name="sessionFactory">
-		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">password</property>
-		<property name="hibernate.connection.pool_size">1</property>
-		<property name="hibernate.connection.url">jdbc:mysql://nmjf-db.czsl0sawytqj.us-west-2.rds.amazonaws.com:3306/mydb</property>
-		<property name="hibernate.connection.username">nmfj_master</property>
-		<property name="hibernate.current_session_context_class">thread</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="hibernate.search.autoregister_listeners">false</property>
-		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.validator.apply_to_ddl">false</property>
-
-		
-		<mapping resource="Food.hbm.xml" />
-		<mapping resource="Group.hbm.xml" />		
-		<mapping resource="User.hbm.xml" />
-		<mapping resource="Note.hbm.xml" />
-		<mapping resource="FoodCategory.hbm.xml" />
-		<mapping resource="Refrigerator.hbm.xml" />
-		<mapping resource="RemainingFood.hbm.xml" />
-		<mapping resource="SharedNote.hbm.xml" />
-		<mapping resource="Order.hbm.xml" />
-		<mapping resource="OrderedItem.hbm.xml" />
-		
-
-	</session-factory>
+    <session-factory name="sessionFactory">
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.connection.pool_size">1</property>
+        <property name="hibernate.connection.url">jdbc:mysql://nmjf-db.czsl0sawytqj.us-west-2.rds.amazonaws.com:3306/mydb</property>
+        <property name="hibernate.connection.username">nmfj_master</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="Group.hbm.xml" />
+        <mapping resource="RemainingFood.hbm.xml" />
+        <mapping resource="Note.hbm.xml" />
+        <mapping resource="Food.hbm.xml" />
+        <mapping resource="Order.hbm.xml" />
+        <mapping resource="User.hbm.xml" />
+        <mapping resource="FoodCategory.hbm.xml" />
+        <mapping resource="RecipeFood.hbm.xml" />
+        <mapping resource="Refrigerator.hbm.xml" />
+        <mapping resource="OrderedItem.hbm.xml" />
+        <mapping resource="SharedNote.hbm.xml" />
+        <mapping resource="Recipe.hbm.xml" />
+    </session-factory>
 </hibernate-configuration>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 22, 2015 3:20:37 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="objects.FoodCategory" table="FoodCategory" catalog="mydb" optimistic-lock="version">
         <id name="idFoodCategory" type="java.lang.Integer">
@@ -10,7 +10,7 @@
         </id>
         <property name="name" type="string">
             <column name="name" length="45" not-null="true" />
-        </property>       
+        </property>
         <set name="foods" table="Food" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idCategory" />

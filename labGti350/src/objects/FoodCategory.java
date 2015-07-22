@@ -1,6 +1,6 @@
 package objects;
 
-// Generated Jul 17, 2015 7:51:51 PM by Hibernate Tools 4.3.1
+// Generated Jul 22, 2015 3:20:37 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,21 +12,17 @@ public class FoodCategory implements java.io.Serializable {
 
 	private Integer idFoodCategory;
 	private String name;
-
 	private Set foods = new HashSet(0);
 
 	public FoodCategory() {
 	}
 
-	public FoodCategory(String name, String description, String urlImage) {
+	public FoodCategory(String name) {
 		this.name = name;
-
 	}
 
-	public FoodCategory(String name, String description, String urlImage,
-			Set foods) {
+	public FoodCategory(String name, Set foods) {
 		this.name = name;
-
 		this.foods = foods;
 	}
 

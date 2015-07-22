@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 22, 2015 3:20:37 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="objects.RecipeFood" table="RecipeFood" catalog="mydb" optimistic-lock="version">
+        <composite-id name="id" class="objects.RecipeFoodId">
+            <key-property name="idFood" type="int">
+                <column name="idFood" />
+            </key-property>
+            <key-property name="idRecipe" type="int">
+                <column name="idRecipe" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="food" class="objects.Food" update="false" insert="false" fetch="select">
+            <column name="idFood" not-null="true" />
+        </many-to-one>
+        <many-to-one name="recipe" class="objects.Recipe" update="false" insert="false" fetch="select">
+            <column name="idRecipe" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="java.lang.Float">
+            <column name="quantity" precision="12" scale="0" />
+        </property>
+        <property name="unity" type="string">
+            <column name="unity" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
