@@ -88,7 +88,7 @@
 			}
 		
 			List<Food> list2 = (List<Food>) request.getAttribute(
-				UserManageCartService.FOOD);
+				UserManageCartService.FOOD_LIST);
 				
 			
 				
@@ -114,7 +114,8 @@
 					<div class="list-group-item ">
 						</br>
 						<h4 class="list-group-item-heading"><%=f.getName()%></h4>
-						<a href="" class="btn btn-primary">view details >></a> </br>
+						<a href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=displayFoodDetails&"
+						+UserManageCartService.FOOD_ID+"="+f.getId()%>" class="btn btn-primary">view details >></a> </br>
 					</div>
 					<%
 						}

@@ -17,7 +17,9 @@ public class UserManageCartService extends Service {
 
 	public static final String FOOD_CATEGORIES = "food_categories";
 	public static final String FOOD = "food";
+	public static final String FOOD_LIST = "food_list";
 	public static final String FOOD_CATEGORY_ID = "food_category_id";
+	public static final String FOOD_ID = "food_id";
 
 	public HashMap<String, Object> executes(HashMap<String, String> args) {
 		load();
@@ -84,7 +86,7 @@ public class UserManageCartService extends Service {
 			List<Food> food = getProductOfCategory(idCat);
 
 			// save list of categories
-			argsOut.put(UserManageCartService.FOOD, food);
+			argsOut.put(UserManageCartService.FOOD_LIST, food);
 
 			// give new location to go
 			argsOut.put(Gate.NEW_LOCATION, "/connected/ManageCart.jsp");
@@ -113,9 +115,55 @@ public class UserManageCartService extends Service {
 		return food;
 	}
 
+	
+	public HashMap<String, Object> displayFoodDetails(HashMap<String, Object> argsIn){
+		
+		HashMap<String, Object> argsOut = new HashMap<String, Object>();
+
+		int idUser = -1;
+		idUser = Integer.parseInt((String) argsIn.get(UserService.USER_ID
+				+ Gate.SESSION_ATTRIBUTE_SUFFIX));
+
+		if (idUser != -1) {
+
+			int idFood = -1;
+			idFood = Integer.parseInt((String) argsIn
+					.get(UserManageCartService.FOOD_ID));
+			Food food = (Food) getProductFood(idFood);
+
+			// save list of categories
+			argsOut.put(UserManageCartService.FOOD, food);
+
+			// give new location to go
+			argsOut.put(Gate.NEW_LOCATION, "/connected/food_details.jsp");
+			// authorization is given
+			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
+
+		} else
+			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, false);
+
+		return argsOut;		
+	}
+	private Food getProductFood(int idFood) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		Query q = session.createQuery(
+				"from Food f where f.id= :idFood")
+				.setParameter("idFood", idFood);
+
+		Food food = (Food) q.uniqueResult();
+		
+
+		tx.commit();
+		return food;
+	}
+
 	@Override
 	public void load() {
 		this.servicesList.add("launchCartManagement");
 		this.servicesList.add("displayFoodForCat");
+		this.servicesList.add("displayFoodDetails");
 	}
 }
