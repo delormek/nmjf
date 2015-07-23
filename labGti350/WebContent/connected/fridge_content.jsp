@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@page import="controller.UserManageCartService"%>
 <%@page import="controller.Service"%>
 <%@page import="entry.Switch"%>
@@ -7,8 +8,6 @@
 <%@page import="java.util.List"%>
 <%@page import="objects.FoodCategory"%>
 <%@page import="objects.Food"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,78 +44,26 @@
 </head>
 <body>
 
+
 	<div class="container">
-		<%
-			List<FoodCategory> list = (List<FoodCategory>) request
-					.getAttribute(UserManageCartService.FOOD_CATEGORIES);
-
-			if (list != null) {
-		%>
-
-
 		<jsp:include page="session_invalidate_link.jsp" />
-		</br>
-		<div class='row'>
-			<div class="col-xs-2 col-xs-offset-4 col-sm-12 col-md-4 col-lg-4 ">
-				<button id="mycart" onclick="displayMyCart()" class="btn btn-default">My
-					cart</button>
-			</div>
-		</div>
-		<!-- -------------------------------CATEGORY LIST ------------------ -->
+
+
 		<div class='row'>
 			<div
-				class="col-xs-10 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4 page-header">
-				<h1>Choose a category</h1>
+				class="col-xs-5 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4 page-header">
+				<h1>My Refrigerator</h1>
 			</div>
 		</div>
-		<div class='row'>
-
-			<div class="col-xs-10 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4">
-				<div class="list-group">
-					<%
-						for (int i = 0; i < list.size(); i++) {
-
-								FoodCategory cat = (FoodCategory) list.get(i);
-					%>
-					<a
-						href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=displayFoodForCat&"
-						+UserManageCartService.FOOD_CATEGORY_ID+"="+cat.getIdFoodCategory()%>"
-						class="list-group-item "> </br>
-						<h4 class="list-group-item-heading"><%=cat.getName()%></h4> </br>
-					</a>
-					<%
-						}
-					%>
-
-				</div>
-			</div>
-		</div>
-
 		<%
-			}
-
 			List<Food> list2 = (List<Food>) request
 					.getAttribute(UserManageCartService.FOOD_LIST);
 
 			if (list2 != null) {
 		%>
-		<jsp:include page="session_invalidate_link.jsp" />
-		</br>
-		<div class='row'>
-			<div class="col-xs-2 col-xs-offset-4 col-sm-12 col-md-4 col-lg-4 ">
-				<button id="mycart" onclick="displayMyCart()" class="btn btn-default">My
-					cart</button>
-			</div>
-		</div>
 
-		<!-- -------------------------------FOOD LIST FROM A SELECTED CATEGORY ------------------ -->
-		<div class='row'>
-			<div
-				class="col-xs-10 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4 page-header">
-				<h1>Select food</h1>
-			</div>
-		</div>
-		</br>
+		<!-- -------------------------------FOOD LIST FROM A SELECTION ------------------ -->
+
 		<div class='row'>
 
 			<div class="col-xs-10 col-xs-offset-1 col-sm-12 col-md-4 col-lg-4">
@@ -132,28 +79,22 @@
 						<a
 							href="${pageContext.request.contextPath}<%="/gate?"+Switch.REQUIRED_CLASSNAME_LBL+"=controller.UserManageCartService&"+Service.REQUESTED_SERVICE_LBL+"=displayFoodDetails&"
 						+UserManageCartService.FOOD_ID+"="+f.getId()%>"
-							class="btn btn-primary">view details >></a> <input
-							class="btn btn-primary" id="food<%=f.getId()%>"
-							onclick="add_product(<%=f.getId()%>)" type="button" value="Add">
-						</br>
+							class="btn btn-primary">view details >></a> </br>
 					</div>
 					<%
+						}
 						}
 					%>
 				</div>
 			</div>
 		</div>
-		<%
-			}
-		%>
 	</div>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script
 		src="${pageContext.request.contextPath}/css/ie10-viewport-bug-workaround.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/jquery/jquery.session.js"></script>
-	<script src="${pageContext.request.contextPath}/jquery/cartjs.js"></script>
+
 </body>
 </html>

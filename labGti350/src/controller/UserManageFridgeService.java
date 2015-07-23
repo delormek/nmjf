@@ -3,9 +3,17 @@ package controller;
 import java.util.HashMap;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import entry.Gate;
+import objects.Food;
+import objects.RemainingFood;
+import objects.RemainingFoodId;
 import objects.SharedNote;
 import objects.User;
+import util.HibernateUtil;
 
 public class UserManageFridgeService extends Service {
 
@@ -15,9 +23,7 @@ public class UserManageFridgeService extends Service {
 
 	}
 
-	public HashMap<String, Object> launchFridgeManagement(
-			HashMap<String, Object> argsIn) {
-
+	public HashMap<String, Object> launchFridgeManagement(HashMap<String, Object> argsIn) {
 		HashMap<String, Object> argsOut = new HashMap<String, Object>();
 
 		int idUser = -1;
@@ -26,31 +32,14 @@ public class UserManageFridgeService extends Service {
 
 		if (idUser != -1) {
 
-			List<Object> notesNotReadAndAssociateCreators = getGroupFridgeFruitsAndVegetables(idUser);
-			List<Object> AllReceivednotes = getGroupFridgeFishAndMeat(idUser);
-			List<Object> AllSentNotes = getGroupSideDish(idUser);
+			
+			List<Food> foodlist = (List<Food>) getListFoodGroup(idUser);
 
-			// save user in an map which will sent to the client
-			//argsOut.put(User.USER_ID + Gate.SESSION_ATTRIBUTE_SUFFIX, idUser);
-
-			// save not read notes and associated creator in an map which will
-			// sent to the client
-			//argsOut.put(UserManageNotesService.SHARED_NOTES_REC_NOT_READ
-					//+ Gate.SESSION_ATTRIBUTE_SUFFIX,
-					//notesNotReadAndAssociateCreators);
-
-			// save all received notes in an map which will
-			// sent to the client
-			//argsOut.put(SharedNote.SHARED_NOTES_RECEIVED
-				///	+ Gate.SESSION_ATTRIBUTE_SUFFIX, AllReceivednotes);
-
-			// save all sent notes in an map which will
-			// sent to the client
-			//argsOut.put(SharedNote.SHARED_NOTES_SENT
-					//+ Gate.SESSION_ATTRIBUTE_SUFFIX, AllSentNotes);
+			// save list of categories
+			argsOut.put(UserManageCartService.FOOD_LIST, foodlist);
 
 			// give new location to go
-			argsOut.put(Gate.NEW_LOCATION, "/connected/ManageNotes.jsp");
+			argsOut.put(Gate.NEW_LOCATION, "/connected/fridge_content.jsp");
 			// authorization is given
 			argsOut.put(Service.SERVICE_VALIDATION_RESPONSE_LBL, true);
 
@@ -61,24 +50,32 @@ public class UserManageFridgeService extends Service {
 
 	}
 
-	private List<Object> getGroupSideDish(int idUser) {
+	private List<Food> getListFoodGroup(int idUser) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		Query q;
+
+		q = session
+				.createQuery("select r.idRefrigerator from Refrigerator r, User u where u.idUser=:idUser and r.group.idGroup = u.group.idGroup");
+		q.setParameter("idUser", idUser);
+		Integer idRefrigerator = (Integer) q.uniqueResult();
 		
-		return null;
+		q = session.createQuery(" select f from RemainingFood r, Food f where r.refrigerator.idRefrigerator = :idRefrige and "
+				+ "r.id.idFood = f.id ").setParameter("idRefrige", idRefrigerator);
+
+		List<Food> foodlist = (List<Food>) q.list();
+	
+		tx.commit();
+		
+		return foodlist;
 	}
 
-	private List<Object> getGroupFridgeFishAndMeat(int idUser) {
-		
-		return null;
-	}
-
-	private List<Object> getGroupFridgeFruitsAndVegetables(int idUser) {
-		
-		return null;
-	}
-
+	
 	@Override
 	public void load() {
-		//this.servicesList.add("launchFridgeManagement");
+		this.servicesList.add("launchFridgeManagement");
 
 	}
 }
